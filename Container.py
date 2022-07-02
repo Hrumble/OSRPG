@@ -4,6 +4,10 @@ class Container:
     def __init__(self, name):
         self.name = name
         self.inventory = []
+    def DisplayInventory(self):
+        print(f"----- {self.name} -----")
+        for inventoryItem in self.inventory:
+            print(f"{inventoryItem.item.name} x{inventoryItem.quantity}")
 
     def GetItemIndex(self, itemID, quantity = 1):
         for inventoryItem in self.inventory:
