@@ -7,3 +7,8 @@ class Item:
     @property
     def ID(self):
         return self._id
+
+class InventoryItem:
+    def __init__(self, item, quantity):
+        self.item = item
+        self.quantity = quantity
