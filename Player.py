@@ -1,6 +1,6 @@
 from Entity import *
 from Container import *
-from Armor import ArmorItem
+from ArmorItem import ArmorItem
 
 class Player(Entity):
     def __init__(self, id, name, health, damage):
