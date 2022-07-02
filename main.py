@@ -1,1 +1,3 @@
+import Interpreter
 
+Interpreter.StartGame()
