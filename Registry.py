@@ -7,8 +7,8 @@ class Registry:
     def AddToRegistry(self, item):
         self.list.append(item)
 
-    def Get(self, item):
+    def GetByID(self, ID):
         for registeredItem in self.list:
-            if registeredItem.ID == item.ID:
+            if registeredItem.ID == ID:
                 return copy.deepcopy(registeredItem)
         return False

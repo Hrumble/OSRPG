@@ -4,6 +4,7 @@ class Container:
     def __init__(self, name):
         self.name = name
         self.inventory = []
+
     def DisplayInventory(self):
         print(f"----- {self.name} -----")
         for inventoryItem in self.inventory:
@@ -20,7 +21,7 @@ class Container:
             if inventoryItem.item.ID == itemToAdd.ID:
                 inventoryItem.quantity += quantityToAdd
                 return
-        self.inventory.append(itemToAdd, quantityToAdd)
+        self.inventory.append(InventoryItem(itemToAdd, quantityToAdd))
 
     def RemoveFromContainer(self, itemToRemove, quantityToRemove = 1):
         for inventoryItem in self.inventory:

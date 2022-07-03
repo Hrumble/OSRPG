@@ -4,7 +4,9 @@ from ArmorItem import ArmorItem
 
 class Player(Entity):
     def __init__(self, id, name, health, damage):
-        super().__init__(id, name, health, damage)
+        super().__init__(id, name)
+        self._damage = damage
+        self._health = health
         self.inventory = Container("Player Inventory")
         self.equipment = {
             "head": 0,
@@ -17,9 +19,9 @@ class Player(Entity):
     @property
     def damage(self):
         if self.equipment["hand"] != 0:
-            return self.damage + self.equipment["hand"].damage
+            return self._damage + self.equipment["hand"].damage
         else:
-            return self.damage
+            return self._damage
 
     @property
     def armorHealth(self):

@@ -1,9 +1,7 @@
 class Entity:
-    def __init__(self, id, name, health, damage):
+    def __init__(self, id, name):
         self._id = id
         self.name = name
-        self.health = health
-        self.damage = damage
 
     @property
     def ID(self):

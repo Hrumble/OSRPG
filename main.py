@@ -1,12 +1,8 @@
-import Interpreter
+from WorldRegistry import *
+from PlayerManager import *
 
-equipment = {
-    "head": 0,
-    "chest": 0,
-    "legs": 0,
-    "feet": 0,
-    "hand": 0
-}
-for slot in equipment:
-    armorItem = equipment[slot]
-    print(armorItem)
+def start():
+    ENTITY_REGISTRY.GetByID("slime").DropLoot(MAIN_PLAYER)
+    print(MAIN_PLAYER.inventory.DisplayInventory())
+
+start()

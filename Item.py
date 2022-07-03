@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, id, name, value):
+    def __init__(self, id, name, value = 1):
         self._id = id
         self.name = name
         self.value = value
