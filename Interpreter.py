@@ -1,5 +1,13 @@
+import TradingInterpreter
+from PlayerManager import *
+from Player import StateMachine
+import BasicInterpreter
+from WorldRegistry import *
 
 def StartGame():
+    ENTITY_REGISTRY.GetByID("wandering_trader").Interact(MAIN_PLAYER)
+    MAIN_PLAYER.money = 1290
+    MAIN_PLAYER
     while True:
         playerInput = input("> ").split()
         func = playerInput[0]
@@ -12,10 +20,8 @@ def StartGame():
                 else:
                     command += ", " + args[i]
         command += ")"
-        print(command)
 
-        try:
-            eval(command)
-        except:
-            print("[SYSTEM] Your Command Was Not Recognized")
-
+        if MAIN_PLAYER.state == StateMachine.Basic:
+            BasicInterpreter.interpret(command)
+        if MAIN_PLAYER.state == StateMachine.Trading:
+            TradingInterpreter.interpret(command)

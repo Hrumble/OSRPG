@@ -1,11 +1,16 @@
 from Entity import *
 from Container import *
 from ArmorItem import ArmorItem
+from WeaponItem import *
 
 class Player(Entity):
     def __init__(self, id, name, health, damage):
         super().__init__(id, name)
+        self.currentTrader = 0
+        self.currentEnemy = 0
+        self.state = StateMachine.Basic
         self._damage = damage
+        self.money = 0
         self._health = health
         self.inventory = Container("Player Inventory")
         self.equipment = {
@@ -33,20 +38,33 @@ class Player(Entity):
         return health
 
     def Equip(self, equipmentPiece):
-        if not isinstance(equipmentPiece, ArmorItem):
+        if not (isinstance(equipmentPiece, ArmorItem) or isinstance(equipmentPiece, WeaponItem)):
             print("[System] Cannot equip this")
             return
         if self.equipment[equipmentPiece.slot] != 0:
             self.inventory.AddToContainer(self.equipment[equipmentPiece.slot])
         self.equipment[equipmentPiece.slot] = equipmentPiece
-        print(f"-Equiped {equipmentPiece.name} on {equipmentPiece.slot}")
+        self.inventory.RemoveFromContainer(equipmentPiece)
+        print(f"- Equiped {equipmentPiece.name} on {equipmentPiece.slot}")
 
+    def ShowEquipment(self):
+        print("----- Equipped -----")
+        for slot in self.equipment:
+            if self.equipment[slot] != 0:
+                print(f"{slot} -> {self.equipment[slot].name}")
+            else:
+                print(f"{slot} : None")
 
+    def ShowStats(self):
+        print("----- Player\'s stats -----")
+        print(f"You have {self.money} coins")
+        print(f"Current Level is 0")
+        print(f"Current XP is 0")
 
-
-
-
-
+class StateMachine:
+    Basic = "Basic"
+    Trading = "Trading"
+    Fighting = "Fighting"
 
 
 

@@ -7,8 +7,10 @@ class Container:
 
     def DisplayInventory(self):
         print(f"----- {self.name} -----")
+        i = 0
         for inventoryItem in self.inventory:
-            print(f"{inventoryItem.item.name} x{inventoryItem.quantity}")
+            print(f"{i}.{inventoryItem.item.name} x{inventoryItem.quantity}")
+            i+= 1
 
     def GetItemIndex(self, itemID, quantity = 1):
         for inventoryItem in self.inventory:
@@ -26,8 +28,11 @@ class Container:
     def RemoveFromContainer(self, itemToRemove, quantityToRemove = 1):
         for inventoryItem in self.inventory:
             if inventoryItem.item.ID == itemToRemove.ID:
+                if inventoryItem.quantity < quantityToRemove:
+                    print(f"[System]You don't have enough of {itemToRemove} in inventory")
+                    return False
                 inventoryItem.quantity -= quantityToRemove
 
                 if inventoryItem.quantity <= 0:
                     self.inventory.remove(inventoryItem)
-                return
+                return True

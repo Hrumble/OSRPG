@@ -12,6 +12,7 @@ class Enemy(Entity):
     @property
     def damage(self):
         return self.level + self._damage
+
     @property
     def health(self):
         return self.level + self._health
@@ -23,4 +24,6 @@ class Enemy(Entity):
             print(f"{inventoryItem.item.name} x{inventoryItem.quantity}")
             player.inventory.AddToContainer(inventoryItem.item, inventoryItem.quantity)
 
-
+    def Die(self):
+        print(f"{self.name} has died")
+        self.DropLoot()
