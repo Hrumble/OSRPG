@@ -32,4 +32,13 @@ def equip(inventoryIndex):
     MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
 
 def leave():
+    MAIN_PLAYER.currentBiome.MoveEntity(MAIN_PLAYER.currentTrader, MAIN_PLAYER.currentBiome.GetRandomPosition())
     MAIN_PLAYER.state = StateMachine.Basic
+    MAIN_PLAYER.isInteracting = False
+
+def help():
+    print("----- Trading Help -----")
+    print("-use [show <trades/inventory/equipped/stats>] to display info")
+    print("-use [buy <index> <quantity>] to buy a certain quantity of items from the trader")
+    print("-use [sell <index> <quantity>] to sell a certain quantity of items from your inventory to the trader")
+    print("-use [leave] to leave")

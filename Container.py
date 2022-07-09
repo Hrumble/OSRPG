@@ -9,7 +9,7 @@ class Container:
         print(f"----- {self.name} -----")
         i = 0
         for inventoryItem in self.inventory:
-            print(f"{i}.{inventoryItem.item.name} x{inventoryItem.quantity}")
+            print(f"{i}.{inventoryItem.item.name} x{inventoryItem.quantity}   {inventoryItem.item.type}")
             i+= 1
 
     def GetItemIndex(self, itemID, quantity = 1):

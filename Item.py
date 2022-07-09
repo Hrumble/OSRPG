@@ -3,6 +3,7 @@ class Item:
         self._id = id
         self.name = name
         self.value = value
+        self.type = "item"
 
     @property
     def ID(self):

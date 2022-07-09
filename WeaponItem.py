@@ -5,3 +5,4 @@ class WeaponItem(Item):
         super().__init__(id, name, value)
         self.damage = damage
         self.slot = slot
+        self.type = "Weapon"

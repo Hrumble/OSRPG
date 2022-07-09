@@ -11,3 +11,4 @@ class ArmorItem(Item):
         super().__init__(id, name, value)
         self.protection = protection
         self.slot = slot
+        self.type = "Armor"

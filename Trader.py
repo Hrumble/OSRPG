@@ -15,7 +15,7 @@ class Trader(Entity):
     def BuyFromPlayer(self, index, quantity, player):
         item = player.inventory.inventory[index].item
         if player.inventory.RemoveFromContainer(item, quantity):
-            player.money += item.value
+            player.money += item.value * quantity
             self.inventory.AddToContainer(item, quantity)
             print(f"- You sold {item.name} x{quantity} to {self.name}")
         else:
@@ -33,6 +33,7 @@ class Trader(Entity):
             print(f"[{self.name}] You don\'t have enough money for that...")
 
     def Interact(self, player):
+        player.isInteracting = True
         player.state = StateMachine.Trading
         player.currentTrader = self
         print(f"----- you have spotted a {self.name} -----")
