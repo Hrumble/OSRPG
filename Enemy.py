@@ -4,11 +4,12 @@ from Player import StateMachine
 from Fight import *
 
 class Enemy(Entity):
-    def __init__(self, id, name, baseHealth, baseDamage, lootTable):
+    def __init__(self, id, name, baseHealth, baseDamage, lootTable, xpDrop = 5):
         super().__init__(id, name)
         self._damage = baseDamage
         self._health = baseHealth
         self.lootTable = lootTable
+        self.xpDrop = 5
         self.level = 0
         self.currentHealth = 0
 
@@ -26,9 +27,11 @@ class Enemy(Entity):
         for inventoryItem in drops:
             print(f"{inventoryItem.item.name} x{inventoryItem.quantity}")
             player.inventory.AddToContainer(inventoryItem.item, inventoryItem.quantity)
+        print("--------------------------------------")
 
     def Die(self, player):
         print(f"{self.name} has died")
+        player.xp += self.xpDrop
         self.DropLoot(player)
 
     def Interact(self, player):
@@ -38,7 +41,9 @@ class Enemy(Entity):
         player.currentFight = Fight(player, self)
         print(f"----- You Stumbled Upon a {self.name}! -----")
         print(f"Lvl {self.level}  HP {self.currentHealth}")
+        print("--------------------------------------")
 
     def DisplayInfo(self):
         print(f"----- {self.name} -----")
         print(f"Lvl {self.level}  HP {self.currentHealth}")
+        print("--------------------------------------")

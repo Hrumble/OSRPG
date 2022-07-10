@@ -37,7 +37,7 @@ def equip(inventoryIndex):
 
 def run():
     chance = random.randint(0, 100)
-    print("----- Player Tries To run")
+    print("----- Player Tries To run -----")
     if chance <= 60:
         print("Player successfully ran away")
         MAIN_PLAYER.state = StateMachine.Basic
@@ -45,6 +45,7 @@ def run():
         MAIN_PLAYER.currentBiome.MoveEntity(MAIN_PLAYER.currentFight.enemy, MAIN_PLAYER.currentBiome.GetRandomPosition())
     else:
         print("Player failed to Run")
+        print("--------------------------------------")
         MAIN_PLAYER.currentFight.EnemyAttack()
 
 def use(index):

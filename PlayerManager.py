@@ -17,5 +17,5 @@ def PositionUpdate():
     for entity in MAIN_PLAYER.currentBiome.map:
         if MAIN_PLAYER.position == entity.position and not MAIN_PLAYER.isInteracting:
             entity.Interact(MAIN_PLAYER)
-    print([entity.name for entity in MAIN_PLAYER.currentBiome.map])
     print([entity.position for entity in MAIN_PLAYER.currentBiome.map])
+    print([entity.name for entity in MAIN_PLAYER.currentBiome.map])

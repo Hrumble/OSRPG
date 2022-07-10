@@ -29,18 +29,26 @@ class Biome:
             self.wasPlayerIn = False
             return False
 
+    def CheckAt(self, position):
+        for entity in self.map:
+            if entity.position == position:
+                return entity
+        return False
+
     def Populate(self, effective):
+        mobID = []
         for i in range(effective):
-            for id in self.entitiesID:
-                mob = ENTITY_REGISTRY.GetByID(id)
-                mobPos = self.GetRandomPosition()
-                mob.xPos = mobPos[0]
-                mob.yPos = mobPos[1]
-                if isinstance(mob, Enemy):
-                    randLevel = random.randint(self.level - 2, self.level + 2)
-                    if randLevel < 0: randLevel = 0
-                    mob.level = randLevel
-                self.map.append(mob)
+            mobID.append(random.choice(self.entitiesID))
+        for id in mobID:
+            mob = ENTITY_REGISTRY.GetByID(id)
+            mobPos = self.GetRandomPosition()
+            mob.xPos = mobPos[0]
+            mob.yPos = mobPos[1]
+            if isinstance(mob, Enemy):
+                randLevel = random.randint(self.level - 1, self.level + 1)
+                if randLevel < 0: randLevel = 0
+                mob.level = randLevel
+            self.map.append(mob)
         for entity in self.map:
             entity1pos = entity.position
             for entity2 in self.map:

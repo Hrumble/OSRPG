@@ -8,9 +8,15 @@ class Container:
     def DisplayInventory(self):
         print(f"----- {self.name} -----")
         i = 0
-        for inventoryItem in self.inventory:
-            print(f"{i}.{inventoryItem.item.name} x{inventoryItem.quantity}   {inventoryItem.item.type}")
-            i+= 1
+        while i < len(self.inventory):
+            if i != len(self.inventory) - 1:
+                print(f"{i}. [{self.inventory[i].item.type}] {self.inventory[i].item.name} x{self.inventory[i].quantity}        "
+                      f"{i+1}. [{self.inventory[i+1].item.type}] {self.inventory[i+1].item.name} x{self.inventory[i+1].quantity}  ")
+            else:
+                print(f"{i}. [{self.inventory[i].item.type}] {self.inventory[i].item.name} x{self.inventory[i].quantity}        ")
+            i += 2
+        print("--------------------------------------")
+
 
     def GetItemIndex(self, itemID, quantity = 1):
         for inventoryItem in self.inventory:

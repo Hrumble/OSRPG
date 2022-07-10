@@ -12,8 +12,8 @@ class Player(Entity):
         self.currentBiome = 0
         self.state = StateMachine.Basic
         self._damage = damage
+        self.xp = 0
         self.money = 0
-        self.level = 0
         self._health = health
         self.inventory = Container("Player Inventory")
         self.equipment = {
@@ -25,6 +25,10 @@ class Player(Entity):
         }
         self.currentHealth = self.maxHealth
         self.currentArmorHealth = self.maxArmorHealth
+
+    @property
+    def level(self):
+        return int(self.xp/100)
 
     @property
     def damage(self):
@@ -67,6 +71,8 @@ class Player(Entity):
         self.equipment[equipmentPiece.slot] = equipmentPiece
         self.inventory.RemoveFromContainer(equipmentPiece)
         print(f"- Equipped {equipmentPiece.name} on {equipmentPiece.slot}")
+        if not self.state == StateMachine.Fighting:
+            self.currentArmorHealth = self.maxArmorHealth
 
     def ShowEquipment(self):
         print("----- Equipped -----")
@@ -76,12 +82,14 @@ class Player(Entity):
                 print(f"{slot} -> {self.equipment[slot].name}")
             else:
                 print(f"{slot} : None")
+        print("--------------------------------------")
 
     def ShowStats(self):
         print("----- Player\'s stats -----")
         print(f"You have {self.money} coins")
         print(f"Current HP is {self.currentHealth}")
-        print(f"Current XP is 0 and Current Level is 0")
+        print(f"Current XP is {self.xp} and Current Level is {self.level}")
+        print("--------------------------------------")
 
 class StateMachine:
     Basic = "Basic"
