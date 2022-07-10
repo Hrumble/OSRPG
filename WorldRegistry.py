@@ -35,16 +35,17 @@ ITEM_REGISTRY.AddToRegistry(Item("hairy_leg", "Hairy Leg", 10))
 ITEM_REGISTRY.AddToRegistry(ConsumableItem("apple", "Apple", 2, 0.1))
 ITEM_REGISTRY.AddToRegistry(ConsumableItem("pie", "Pie", 5, 0.15))
 ITEM_REGISTRY.AddToRegistry(ConsumableItem("small_potion", "Small Potion", 10, 0.2))
-ITEM_REGISTRY.AddToRegistry(ConsumableItem("medium_potion", "Medium Potion", 20, 0.4))
-ITEM_REGISTRY.AddToRegistry(ConsumableItem("big_potion", "Big Potion", 40, 0.6))
-ITEM_REGISTRY.AddToRegistry(ConsumableItem("large_potion", "Large Potion", 60, 0.8))
-ITEM_REGISTRY.AddToRegistry(ConsumableItem("extreme_potion", "Extreme Potion", 100, 1))
+ITEM_REGISTRY.AddToRegistry(ConsumableItem("medium_potion", "Medium Potion", 20, 0.4, True))
+ITEM_REGISTRY.AddToRegistry(ConsumableItem("big_potion", "Big Potion", 40, 0.6, True))
+ITEM_REGISTRY.AddToRegistry(ConsumableItem("large_potion", "Large Potion", 60, 0.8, True))
+ITEM_REGISTRY.AddToRegistry(ConsumableItem("extreme_potion", "Extreme Potion", 100, 1, True))
 
 #Weapons# id, name, value, damage
 ITEM_REGISTRY.AddToRegistry(WeaponItem("wooden_sword", "Wooden Sword", 1, 2))
 ITEM_REGISTRY.AddToRegistry(WeaponItem("rusty_copper_sword", "Rusty Copper Sword", 1, 3))
 ITEM_REGISTRY.AddToRegistry(WeaponItem("vine_whip", "Vine Whip", 25, 7))
 ITEM_REGISTRY.AddToRegistry(WeaponItem("moonlight_swordnata", "Moonlight Swordnata", 100, 30))
+ITEM_REGISTRY.AddToRegistry(WeaponItem("wolf_sword", "Wolf Sword", 30, 8))
 ITEM_REGISTRY.AddToRegistry(WeaponItem("sturdy_iron_sword", "Sturdy Iron Sword", 5,  5))
 
 #Armor# id, name, value, protection, slot

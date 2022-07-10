@@ -1,4 +1,5 @@
 from PlayerManager import *
+from GeneralInterpreter import *
 import random
 
 info = "info"
@@ -27,13 +28,12 @@ def help():
     print("-use [show <info/inventory/equipped/stats>] to display info")
     print("-use [attack] to attack the enemy")
     print("-use [equip <index>] to equip an item in inventory")
+    print("use [use <index>] to use a consumable")
     print("-use [run] to try running away")
+    print("--------------------------------")
 
 def attack():
     MAIN_PLAYER.currentFight.PlayerAttack()
-
-def equip(inventoryIndex):
-    MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
 
 def run():
     chance = random.randint(0, 100)
@@ -47,6 +47,3 @@ def run():
         print("Player failed to Run")
         print("--------------------------------------")
         MAIN_PLAYER.currentFight.EnemyAttack()
-
-def use(index):
-    pass

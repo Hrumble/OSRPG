@@ -17,9 +17,9 @@ def StartGame():
             args = playerInput[1:]
             for i in range(len(args)):
                 if i == 0:
-                    command += args[i]
+                    command += "\"" + args[i] + "\""
                 else:
-                    command += ", " + args[i]
+                    command += ", " + "\"" + args[i] + "\""
         command += ")"
         if MAIN_PLAYER.state == StateMachine.Basic:
             BasicInterpreter.interpret(command)

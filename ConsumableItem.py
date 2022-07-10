@@ -1,8 +1,8 @@
 from Item import *
 
 class ConsumableItem(Item):
-    def __init__(self, id, name, value, healthModifier):
-        super().__init__(id, name, value)
+    def __init__(self, id, name, value, healthModifier, craftable = False):
+        super().__init__(id, name, value, craftable)
         self.modifier = healthModifier
 
     def Consume(self, player):

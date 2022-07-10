@@ -17,12 +17,24 @@ class Container:
             i += 2
         print("--------------------------------------")
 
-
     def GetItemIndex(self, itemID, quantity = 1):
         for inventoryItem in self.inventory:
             if inventoryItem.item.ID == itemID and inventoryItem.quantity >= quantity:
                 return self.inventory.index(inventoryItem)
         return False
+
+    def HasItem(self, itemID, quantity = 1):
+        hasItem = False
+        hasQuantity = False
+        itemQuantity = 0
+        for inventoryItem in self.inventory:
+            if inventoryItem.item.ID == itemID:
+                hasItem = True
+                itemQuantity = inventoryItem.quantity
+                if itemQuantity >= quantity:
+                    hasQuantity = True
+
+        return [hasItem, hasQuantity, itemQuantity]
 
     def AddToContainer(self, itemToAdd, quantityToAdd = 1):
         for inventoryItem in self.inventory:

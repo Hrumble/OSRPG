@@ -2,6 +2,7 @@ from Entity import *
 from Container import *
 from ArmorItem import ArmorItem
 from WeaponItem import *
+import json
 
 class Player(Entity):
     def __init__(self, id, name, health, damage):
@@ -62,6 +63,29 @@ class Player(Entity):
         print("----- Player Died -----")
         quit()
 
+    def Craft(self, itemID):
+        from WorldRegistry import ITEM_REGISTRY
+
+        item = ITEM_REGISTRY.GetByID(itemID)
+        if not item.craftable:
+            print("[SYSTEM] Cannot craft this")
+            return
+        jsonF = 0
+        with open(item.craftingDir, "r") as f:
+            jsonF = json.load(f)
+        for id in jsonF["materials"]:
+            quantity = jsonF["materials"][id]
+            if not self.inventory.HasItem(id, quantity)[1]:
+                print(f"[Player] You are missing {ITEM_REGISTRY.GetByID(id).name} x{quantity - self.inventory.HasItem(id, quantity)[2]}")
+                return
+        for id in jsonF["materials"]:
+            quantity = jsonF["materials"][id]
+            print(f"[Player] used {ITEM_REGISTRY.GetByID(id).name} x{quantity}")
+            self.inventory.RemoveFromContainer(ITEM_REGISTRY.GetByID(id), quantity)
+        self.inventory.AddToContainer(item)
+        print(f"[Player] Crafted {item.name}")
+        print("-------------------------------------------")
+
     def Equip(self, equipmentPiece):
         if not (isinstance(equipmentPiece, ArmorItem) or isinstance(equipmentPiece, WeaponItem)):
             print("[System] Cannot equip this")
@@ -70,9 +94,15 @@ class Player(Entity):
             self.inventory.AddToContainer(self.equipment[equipmentPiece.slot])
         self.equipment[equipmentPiece.slot] = equipmentPiece
         self.inventory.RemoveFromContainer(equipmentPiece)
-        print(f"- Equipped {equipmentPiece.name} on {equipmentPiece.slot}")
+        print(f"[Player] Equipped {equipmentPiece.name} on {equipmentPiece.slot}")
         if not self.state == StateMachine.Fighting:
             self.currentArmorHealth = self.maxArmorHealth
+
+    def Unequip(self, slot):
+        equipmentPiece = self.equipment[slot]
+        self.inventory.AddToContainer(equipmentPiece)
+        self.equipment[slot] = 0
+        print(f"[Player] Unequipped {equipmentPiece.name} off {equipmentPiece.slot}")
 
     def ShowEquipment(self):
         print("----- Equipped -----")

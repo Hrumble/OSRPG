@@ -1,16 +1,5 @@
 from PlayerManager import *
-
-north = "north"
-south = "south"
-east = "east"
-west = "west"
-inventory = "inventory"
-equipped = "equipped"
-equipment = "equipped"
-stats = "stat"
-stat = "stat"
-pos = "position"
-position = "position"
+from GeneralInterpreter import *
 
 def DrawMiniMap():
     biome = MAIN_PLAYER.currentBiome
@@ -51,9 +40,6 @@ def show(thing):
         print(f"Current Biome: {MAIN_PLAYER.currentBiome.name} Lvl: {MAIN_PLAYER.currentBiome.level}")
         print("--------------------------------------")
 
-def equip(inventoryIndex):
-    MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
-
 def go(direction):
     if direction == "north":
         MAIN_PLAYER.yPos += 1
@@ -65,19 +51,15 @@ def go(direction):
         MAIN_PLAYER.xPos -= 1
 
 def tp(xPos, yPos):
+    xPos = int(xPos)
+    yPos = int(yPos)
     MAIN_PLAYER.xPos = xPos
     MAIN_PLAYER.yPos = yPos
 
-def use(index):
-    item = MAIN_PLAYER.inventory.inventory[index].item
-    if isinstance(item, ConsumableItem):
-        item.Consume(MAIN_PLAYER)
-    else:
-        print("[SYSTEM] You can\'t consume that")
-
 def help():
     print("----- Command Help -----")
-    print("-use [show <trades/inventory/equipped/stats>] to display info")
-    print("-use [go <north/south/east/west>] to move in a particular direction")
-    print("-use [equip <index>] to equip an item in inventory")
+    print("use [show <trades/inventory/equipped/stats>] to display info")
+    print("use [go <north/south/east/west>] to move in a particular direction")
+    print("use [equip <index>] to equip an item in inventory")
+    print("use [use <index>] to use a consumable")
     print("--------------------------------------")
