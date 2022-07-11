@@ -2,13 +2,6 @@ from PlayerManager import *
 from GeneralInterpreter import *
 import random
 
-info = "info"
-information = "info"
-stat = "stat"
-stats = "stat"
-inventory = "inventory"
-equipped = "equipped"
-equipment = "equipped"
 
 def interpret(command):
     eval(command)
@@ -38,7 +31,7 @@ def attack():
 def run():
     chance = random.randint(0, 100)
     print("----- Player Tries To run -----")
-    if chance <= 60:
+    if chance <= 65:
         print("Player successfully ran away")
         MAIN_PLAYER.state = StateMachine.Basic
         MAIN_PLAYER.isInteracting = False

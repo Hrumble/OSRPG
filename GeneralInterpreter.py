@@ -17,3 +17,7 @@ def use(index):
         item.Consume(MAIN_PLAYER)
     else:
         print("[SYSTEM] You can\'t consume that")
+
+def info(id):
+    from WorldRegistry import ITEM_REGISTRY
+    ITEM_REGISTRY.GetByID(id).Info()

@@ -6,3 +6,6 @@ class WeaponItem(Item):
         self.damage = damage
         self.slot = slot
         self.type = "Weapon"
+
+    def ExtraInfo(self):
+        print(f"DMG: {self.damage}")

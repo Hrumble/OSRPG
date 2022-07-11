@@ -1,4 +1,5 @@
 import json
+import os
 
 class Item:
     def __init__(self, id, name, value = 1, craftable = False):
@@ -12,6 +13,29 @@ class Item:
     @property
     def ID(self):
         return self._id
+
+    def Info(self):
+        print(f"----- {self.name} -----")
+        print(f"Type: [{self.type}]")
+        self.ExtraInfo()
+        self.ShowCrafting()
+        print("------------------------")
+
+    def ExtraInfo(self):
+        pass
+
+    def ShowCrafting(self):
+        jsonF = 0
+        if self.craftable and os.path.exists(self.craftingDir):
+            with open(self.craftingDir, "r") as f:
+                jsonF = json.load(f)
+            print("--- Crafting ---")
+            mats = jsonF["materials"]
+            for id in mats:
+                print(f"Requires {id} x{mats[id]}")
+        else:
+            print("-- No Crafting --")
+
 
 class InventoryItem:
     def __init__(self, item, quantity):

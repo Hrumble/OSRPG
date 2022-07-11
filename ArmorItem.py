@@ -12,3 +12,6 @@ class ArmorItem(Item):
         self.protection = protection
         self.slot = slot
         self.type = "Armor"
+
+    def ExtraInfo(self):
+        print(f"Protection: {self.protection}")
