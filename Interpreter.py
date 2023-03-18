@@ -6,7 +6,7 @@ import BasicInterpreter
 from Fight import *
 from WorldRegistry import *
 import FightingInterpreter
-
+from cmd import Cmd
 
 def StartGame():
     while True:
