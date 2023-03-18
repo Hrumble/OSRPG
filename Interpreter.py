@@ -7,6 +7,7 @@ from Fight import *
 from WorldRegistry import *
 import FightingInterpreter
 
+
 def StartGame():
     while True:
         PositionUpdate()
