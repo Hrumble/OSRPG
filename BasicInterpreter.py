@@ -1,5 +1,6 @@
 from PlayerManager import *
 from GeneralInterpreter import *
+from cmd import Cmd
 
 def DrawMiniMap():
     biome = MAIN_PLAYER.currentBiome
@@ -24,42 +25,46 @@ def DrawMiniMap():
             rightVal = "?"
         print(f"{leftVal} {middleVal} {rightVal}")
 
-def interpret(command):
-    eval(command)
-    DrawMiniMap()
+class BasicConsole(Cmd):
+    
+    prompt = DrawMiniMap(), "\n > "
+    def do_go(self, args):
+        direction = args[0]
+        if direction == "north":
+            MAIN_PLAYER.yPos += 1
+        if direction == "south":
+            MAIN_PLAYER.yPos -= 1
+        if direction == "east":
+            MAIN_PLAYER.xPos += 1
+        if direction == "west":
+            MAIN_PLAYER.xPos -= 1
+    def do_tp(self, args):
+        # TP the player to a specific spot on the map (Admin)
 
-def show(thing):
-    if thing == "inventory":
-        MAIN_PLAYER.inventory.DisplayInventory()
-    if thing == "equipped":
-        MAIN_PLAYER.ShowEquipment()
-    if thing == "stat":
-        MAIN_PLAYER.ShowStats()
-    if thing == "position":
-        print(f"{MAIN_PLAYER.xPos} Latitude {MAIN_PLAYER.yPos} Longitude")
-        print(f"Current Biome: {MAIN_PLAYER.currentBiome.name} Lvl: {MAIN_PLAYER.currentBiome.level}")
+        xPos = int(args[0])
+        yPos = int(args[1])
+
+        MAIN_PLAYER.xPos = xPos
+        MAIN_PLAYER.yPos = yPos
+
+    def do_show(self, args):
+        if args[0] == "inventory":
+            MAIN_PLAYER.inventory.DisplayInventory()
+        if args[0] == "equipped":
+            MAIN_PLAYER.ShowEquipment()
+        if args[0] == "stat":
+            MAIN_PLAYER.ShowStats()
+        if args[0] == "position":
+            print(f"{MAIN_PLAYER.xPos} Latitude {MAIN_PLAYER.yPos} Longitude")
+            print(f"Current Biome: {MAIN_PLAYER.currentBiome.name} Lvl: {MAIN_PLAYER.currentBiome.level}")
+            print("--------------------------------------")
+
+    def do_help(self, args):
+        print("----- Command Help -----")
+        print("use [show <trades/inventory/equipped/stats>] to display info")
+        print("use [go <north/south/east/west>] to move in a particular direction")
+        print("use [equip <index>] to equip an item in inventory")
+        print("use [use <index>] to use a consumable")
         print("--------------------------------------")
 
-def go(direction):
-    if direction == "north":
-        MAIN_PLAYER.yPos += 1
-    if direction == "south":
-        MAIN_PLAYER.yPos -= 1
-    if direction == "east":
-        MAIN_PLAYER.xPos += 1
-    if direction == "west":
-        MAIN_PLAYER.xPos -= 1
 
-def tp(xPos, yPos):
-    xPos = int(xPos)
-    yPos = int(yPos)
-    MAIN_PLAYER.xPos = xPos
-    MAIN_PLAYER.yPos = yPos
-
-def help():
-    print("----- Command Help -----")
-    print("use [show <trades/inventory/equipped/stats>] to display info")
-    print("use [go <north/south/east/west>] to move in a particular direction")
-    print("use [equip <index>] to equip an item in inventory")
-    print("use [use <index>] to use a consumable")
-    print("--------------------------------------")

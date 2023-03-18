@@ -6,7 +6,6 @@ import BasicInterpreter
 from Fight import *
 from WorldRegistry import *
 import FightingInterpreter
-from cmd import Cmd
 
 def StartGame():
     while True:
@@ -23,8 +22,8 @@ def StartGame():
                     command += ", " + "\"" + args[i] + "\""
         command += ")"
         if MAIN_PLAYER.state == StateMachine.Basic:
-            BasicInterpreter.interpret(command)
+            BasicInterpreter.BasicConsole().cmdloop()
         if MAIN_PLAYER.state == StateMachine.Trading:
             TradingInterpreter.interpret(command)
         if MAIN_PLAYER.state == StateMachine.Fighting:
-            FightingInterpreter.interpret(command)
+            FightingInterpreter.FightingConsole().cmdloop()
