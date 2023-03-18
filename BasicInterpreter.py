@@ -26,10 +26,14 @@ def DrawMiniMap():
         print(f"{leftVal} {middleVal} {rightVal}")
 
 class BasicConsole(Cmd):
-    
-    prompt = DrawMiniMap(), "\n > "
+
+    prompt = "> "
+
+    def preloop(self):
+        DrawMiniMap()
+
     def do_go(self, args):
-        direction = args[0]
+        direction = args
         if direction == "north":
             MAIN_PLAYER.yPos += 1
         if direction == "south":
@@ -48,16 +52,18 @@ class BasicConsole(Cmd):
         MAIN_PLAYER.yPos = yPos
 
     def do_show(self, args):
-        if args[0] == "inventory":
+        if args == "inventory":
             MAIN_PLAYER.inventory.DisplayInventory()
-        if args[0] == "equipped":
+        if args == "equipped":
             MAIN_PLAYER.ShowEquipment()
-        if args[0] == "stat":
+        if args == "stat":
             MAIN_PLAYER.ShowStats()
-        if args[0] == "position":
+        if args == "position":
             print(f"{MAIN_PLAYER.xPos} Latitude {MAIN_PLAYER.yPos} Longitude")
             print(f"Current Biome: {MAIN_PLAYER.currentBiome.name} Lvl: {MAIN_PLAYER.currentBiome.level}")
             print("--------------------------------------")
+        else:
+            print(f"{args} is not a valid value")
 
     def do_help(self, args):
         print("----- Command Help -----")
