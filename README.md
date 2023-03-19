@@ -10,13 +10,19 @@ This one is pretty straightforward
 2. Go under "#Items# id, name, value"
 
 3. Below all the already existing items add
+
+```python
     ITEM_REGISTRY.AddToRegistry(Item("item_id", "Item Name", value))
+```
 
 4. Replace item_id by your item's ID, Item Name by your item's name, and the value by your
 desired value
 
 5. Adding a "Mushroom Spore" Item with a price of 10 would look like:
+
+```python
     ITEM_REGISTRY.AddToRegistry(Item("mushroom_spore", "Mushroom Spore", 10))
+```
 
 =================================================
 
@@ -28,11 +34,17 @@ Pretty much as easy
 2. Go under "#Consumables"
 
 3. Below all the already existing items add
+
+```python
     ITEM_REGISTRY.AddToRegistry(ConsumableItem("consumable_id", "Consumable Name", value, health_modifier, craftable))
+```
 
 4. replace everything like with the item:
+
+```
     health_modifier = value between 0 and 1 to indicate how much the consumable heals
     craftable = True or False on whether or not the item is craftable
+```
 
 5. !CAUTION! if craftable is set to True, you MUST add a recipe. (See below on how to add recipes)
 
@@ -48,6 +60,7 @@ Recipes are in json format, and must be placed in the RPG/CraftingRecipes/ folde
 
 3. In the json file, add:
 
+```json
 {
   "materials" : {
     "material_1" : quantity1,
@@ -55,17 +68,20 @@ Recipes are in json format, and must be placed in the RPG/CraftingRecipes/ folde
     "material_3" : quantity3
   }
 }
+```
 
 4. of course replace all the values with your desired values, add as much materials as you want.
 Here is an example of a file called wolf_sword.json:
-"""
+
+```json
 {
   "materials" : {
     "wolf_fang" : 3,
     "sturdy_iron_sword" : 1
   }
 }
-"""
+```
+
 this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 
 5. Save the json file.
@@ -76,7 +92,10 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 1. in WorldRegistry.py go under all the existing weapons under #Weapons
 
 2. add this line:
+
+```python
     ITEM_REGISTRY.AddToRegistry(WeaponItem("weapon_id", "Weapon Name", value, damage))
+```
 
 3. Replace with your desired values
 
@@ -89,13 +108,19 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 1. in WorldRegistry.py go under all the existing armor items under #Armor
 
 2. Add this line:
+
+```python
     ITEM_REGISTRY.AddToRegistry(ArmorItem("armor_id", "Armor Name", value, protection, ArmorItem.slot_name))
+```
 
 3. There are 4 total possible slots:
+
+```
     ArmorItem.headSlot
     ArmorItem.chestSlot
     ArmorItem.legSlot
     ArmorItem.feetSlot
+```
 
 =================================================
 
@@ -103,8 +128,11 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 1. In WorldRegistry.py go under all the existing tables under #Loot Tables
 
 2. Add this line:
+
+```python
     enemy_id_table = LootTable(["item_id_1", "item_id_2"], [quantity_of_item1, quantity_of_item2], [dropchance_item1,
     dropchance_item2])
+```
 
 3. Replace all the values. add as much items and quantities as you want.
 
@@ -118,12 +146,18 @@ Here is an example of the slime's loot table
 1. In WorldRegistry.py go under all the existing entities under #Entities
 
 2. Add this line:
+
+```python
     ENTITY_REGISTRY.AddToRegistry(Enemy("enemy_id", "Enemy Name", baseHealth, baseDamage, enemy_id_table))
+```
 
 3. Replace all the values, baseHealth and baseDamage is just the health and damage of the enemy
 
 Here an example of the slime enemy:
+
+```python
     ENTITY_REGISTRY.AddToRegistry(Enemy("slime", "Slime", 10, 2, slime_table))
+```
 
 =================================================
 
@@ -131,19 +165,26 @@ Here an example of the slime enemy:
 1. In WorldRegistry.py go under all the existing entities under #Entities
 
 2. Add this line:
-    ENTITY_REGISTRY.AddToRegistry(Trader("trader_id", "Trader Name", resell_rate,
+
+```python
+    ENTITY_REGISTRY.AddToRegistry(Trader("trader_id", "Trader Name", resale_rate,
                                      ["item_id_1", "item_id_2", "item_id_3", "item_id_4"],
                                      [quantity1, quantity2, quantity3, quantity4]))
+```
 
-3. Replace all the values and add as much items and quantities as you want
+3. Replace all the values and add as many items and quantities as you want
 
 4. resell_rate is the price at which the trader will sell you items based on their values.
-    a resell rate of 1 would make that trader sell you items at the same price that you sold them to him
+    a resale rate of 1 would make that trader sell you items at the same price that you sold them to him
 
 Here is the example of a Wandering Trader:
+
+```python
     ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5,
                                      ["leather_helmet", "leather_leggings", "pie", "small_potion"],
                                      [2, 1, 10, 6]))
+```
+
 =================================================
 
 ================Adding=Biomes====================
@@ -158,7 +199,7 @@ Here is the example of a Wandering Trader:
 
 3. Replace all the values, here is a quick explanation of some of them:
 
-```python
+```
     enemy_level = the level around which the enemies will be inside the biome
     enemy_effective = How much enemies are in the biome
     [initial_X_position, initial_Y_position] = the position of the center of the biome
