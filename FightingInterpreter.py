@@ -3,14 +3,9 @@ from GeneralInterpreter import *
 import random
 from cmd import Cmd
 
-class FightingConsole(Cmd):
-    prompt = "FIGHT>> "
+class FightingConsole(GeneralCommands):
 
-    def postcmd(self, stop, line):
-        self.do_EOF(line)
-        from Interpreter import StartGame
-        StartGame()
-        return Cmd.postcmd(self, stop, line)
+    prompt = "FIGHT>> "
 
     def do_show(self, args):
         # Shows info on current player things
@@ -47,6 +42,3 @@ class FightingConsole(Cmd):
             print("Player failed to Run")
             print("--------------------------------------")
             MAIN_PLAYER.currentFight.EnemyAttack()
-
-    def do_EOF(self, line):
-        return True

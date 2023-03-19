@@ -1,23 +1,42 @@
 from PlayerManager import *
+from cmd import Cmd
 
-def equip(inventoryIndex):
-    inventoryIndex = int(inventoryIndex)
-    MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
+class GeneralCommands(Cmd):
 
-def unequip(slot):
-    MAIN_PLAYER.Unequip(slot)
+    prompt = "> "
 
-def craft(id):
-    MAIN_PLAYER.Craft(id)
+    def postcmd(self, stop, line):
+        self.do_EOF(line)
+        from Interpreter import StartGame
+        StartGame()
+        return Cmd.postcmd(self, stop, line)
 
-def use(index):
-    index = int(index)
-    item = MAIN_PLAYER.inventory.inventory[index].item
-    if isinstance(item, ConsumableItem):
-        item.Consume(MAIN_PLAYER)
-    else:
-        print("[SYSTEM] You can\'t consume that")
+    def do_equip(self, args):
 
-def info(id):
-    from WorldRegistry import ITEM_REGISTRY
-    ITEM_REGISTRY.GetByID(id).Info()
+        inventoryIndex = int(args)
+        MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
+
+    def do_unequip(self, args):
+        inventoryIndex = int(args)
+        MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
+
+    def do_craft(self, args):
+        MAIN_PLAYER.Craft(args)
+
+    def do_use(self, args):
+        index = int(args)
+        item = MAIN_PLAYER.inventory.inventory[index].item
+        if isinstance(item, ConsumableItem):
+            item.Consume(MAIN_PLAYER)
+        else:
+            print("[SYSTEM] You can\'t consume that")
+
+    def do_info(self, args):
+        from WorldRegistry import ITEM_REGISTRY
+        ITEM_REGISTRY.GetByID(args).Info()
+
+    def do_EOF(self, line):
+        return True
+
+    def do_Default(self, line):
+        print("[SYSTEM]Command does not exist or is entered wrongly")

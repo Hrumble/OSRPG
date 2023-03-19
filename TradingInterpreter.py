@@ -2,14 +2,10 @@ from PlayerManager import *
 from GeneralInterpreter import *
 from cmd import Cmd
 
-class TradingConsole(Cmd):
+class TradingConsole(GeneralCommands):
+
     prompt = "TRADE>> "
 
-    def postcmd(self, stop, line):
-        self.do_EOF(line)
-        from Interpreter import StartGame
-        StartGame()
-        return Cmd.postcmd(self, stop, line)
 
     def do_buy(self, args):
         args = args.split()
@@ -55,6 +51,4 @@ class TradingConsole(Cmd):
         print("use [leave] to leave")
         print("--------------------------------")
 
-    def do_EOF(self, line):
-        return True
 
