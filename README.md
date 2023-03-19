@@ -3,6 +3,7 @@ Feel free to download it, toy with the code, add biome, items, entities, and any
 keep reading to get a tutorial on adding anything in the game as it is.
 
 =================ADDING=ITEMS====================
+
 This one is pretty straightforward
 
 1. Open WorldRegistry.py
@@ -27,6 +28,7 @@ desired value
 =================================================
 
 ================Adding=Consumables===============
+
 Pretty much as easy
 
 1. Open WorldRegistry.py
@@ -51,6 +53,7 @@ Pretty much as easy
 =================================================
 
 ================Adding=Recipes===================
+
 Recipes are in json format, and must be placed in the RPG/CraftingRecipes/ folder
 
 1. go in the RPG/CraftingRecipes/ folder
@@ -89,6 +92,7 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 =================================================
 
 ================Adding=Weapons===================
+
 1. in WorldRegistry.py go under all the existing weapons under #Weapons
 
 2. add this line:
@@ -105,6 +109,7 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 =================================================
 
 ================Adding=Armor=====================
+
 1. in WorldRegistry.py go under all the existing armor items under #Armor
 
 2. Add this line:
@@ -125,6 +130,7 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 =================================================
 
 ================Adding=Loot=Tables===============
+
 1. In WorldRegistry.py go under all the existing tables under #Loot Tables
 
 2. Add this line:
@@ -143,6 +149,7 @@ Here is an example of the slime's loot table
 =================================================
 
 ================Adding=Enemies==================
+
 1. In WorldRegistry.py go under all the existing entities under #Entities
 
 2. Add this line:
@@ -162,6 +169,7 @@ Here an example of the slime enemy:
 =================================================
 
 ================Adding=Traders===================
+
 1. In WorldRegistry.py go under all the existing entities under #Entities
 
 2. Add this line:
@@ -174,7 +182,7 @@ Here an example of the slime enemy:
 
 3. Replace all the values and add as many items and quantities as you want
 
-4. resell_rate is the price at which the trader will sell you items based on their values.
+4. resale_rate is the price at which the trader will sell you items based on their values.
     a resale rate of 1 would make that trader sell you items at the same price that you sold them to him
 
 Here is the example of a Wandering Trader:
