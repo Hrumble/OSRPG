@@ -41,6 +41,6 @@ def StartGame():
             DrawMiniMap()
             BasicInterpreter.BasicConsole().cmdloop()
         if MAIN_PLAYER.state == StateMachine.Trading:
-            TradingInterpreter.interpret()
+            TradingInterpreter.TradingConsole.cmdloop()
         if MAIN_PLAYER.state == StateMachine.Fighting:
             FightingInterpreter.FightingConsole().cmdloop()
