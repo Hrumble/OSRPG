@@ -8,6 +8,7 @@ from ArmorItem import *
 from LootTable import *
 from Trader import *
 
+# See Registry.py for more info
 ITEM_REGISTRY = Registry()
 ENTITY_REGISTRY = Registry()
 

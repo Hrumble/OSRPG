@@ -5,6 +5,13 @@ from cmd import Cmd
 
 class FightingConsole(Cmd):
     prompt = "FIGHT>> "
+
+    def postcmd(self, stop, line):
+        self.do_EOF(line)
+        from Interpreter import StartGame
+        StartGame()
+        return Cmd.postcmd(self, stop, line)
+
     def do_show(self, args):
         # Shows info on current player things
 
@@ -43,3 +50,5 @@ class FightingConsole(Cmd):
             print("--------------------------------------")
             MAIN_PLAYER.currentFight.EnemyAttack()
 
+    def do_EOF(self, line):
+        return True

@@ -2,35 +2,15 @@ from PlayerManager import *
 from GeneralInterpreter import *
 from cmd import Cmd
 
-def DrawMiniMap():
-    biome = MAIN_PLAYER.currentBiome
-    playerPos = MAIN_PLAYER.position
-    posArray = [[[playerPos[0] - 1, playerPos[1] + 1], [playerPos[0], playerPos[1] + 1], [playerPos[0] + 1, playerPos[1] + 1]],
-                [[playerPos[0] - 1, playerPos[1]], playerPos, [playerPos[0] + 1, playerPos]],
-                [[playerPos[0] - 1, playerPos[1] - 1], [playerPos[0], playerPos[1] - 1], [playerPos[0] + 1, playerPos[1] - 1]]]
-    for position in posArray:
-        left = position[0]
-        middle = position[1]
-        right = position[2]
-        leftVal = "#"
-        middleVal = "#"
-        rightVal = "#"
-        if biome.CheckAt(left):
-            leftVal = "?"
-        if biome.CheckAt(middle):
-            middleVal = "?"
-        if middle == playerPos:
-            middleVal = "P"
-        if biome.CheckAt(right):
-            rightVal = "?"
-        print(f"{leftVal} {middleVal} {rightVal}")
 
 class BasicConsole(Cmd):
 
     prompt = "> "
-
-    def preloop(self):
-        DrawMiniMap()
+    def postcmd(self, stop, line):
+        self.do_EOF(line)
+        from Interpreter import StartGame
+        StartGame()
+        return Cmd.postcmd(self, stop, line)
 
     def do_go(self, args):
         direction = args
@@ -44,7 +24,7 @@ class BasicConsole(Cmd):
             MAIN_PLAYER.xPos -= 1
     def do_tp(self, args):
         # TP the player to a specific spot on the map (Admin)
-
+        args = args.split()
         xPos = int(args[0])
         yPos = int(args[1])
 
@@ -72,5 +52,8 @@ class BasicConsole(Cmd):
         print("use [equip <index>] to equip an item in inventory")
         print("use [use <index>] to use a consumable")
         print("--------------------------------------")
+
+    def do_EOF(self, line):
+        return True
 
 

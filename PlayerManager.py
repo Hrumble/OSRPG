@@ -16,6 +16,8 @@ def PositionUpdate():
             MAIN_PLAYER.currentBiome = biome
     for entity in MAIN_PLAYER.currentBiome.map:
         if MAIN_PLAYER.position == entity.position and not MAIN_PLAYER.isInteracting:
+            # Each entity has its own interact function
             entity.Interact(MAIN_PLAYER)
+    # Uncomment to get access to every enemy on the map
     #print([entity.position for entity in MAIN_PLAYER.currentBiome.map])
     #print([entity.name for entity in MAIN_PLAYER.currentBiome.map])
