@@ -150,18 +150,25 @@ Here is the example of a Wandering Trader:
 1. In WorldLoc.py go under all the existing biomes under #Biomes
 
 2. Add this line:
+
+```
     BIOMES.append(Biome("Biome Name", [initial_X_position, initial_Y_position],
     biome_radius, ["enemy_id1", "enemy_id2", "enemy_id3", "enemy_id4"], enemy_level, enemy_effective))
+```
 
 3. Replace all the values, here is a quick explanation of some of them:
+```
     enemy_level = the level around which the enemies will be inside the biome
     enemy_effective = How much enemies are in the biome
     [initial_X_position, initial_Y_position] = the position of the center of the biome
     biome_radius = How much the biome extends beyond its center
+```
 
 Here is an example of the starting biome
+```
     BIOMES.append(Biome("Starter Plains", [0, 0],
     10, ["slime", "spider", "wolf", "wandering_trader"], 0, 60))
+```
 The biome is centered at 0 0 and makes a square going from [-10, -10] to [10, 10]
 It contains a total of 60 slimes + spiders + wolves + wandering traders each of level 0.
 
