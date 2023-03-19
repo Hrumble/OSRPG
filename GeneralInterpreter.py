@@ -5,6 +5,7 @@ class GeneralCommands(Cmd):
 
     prompt = "> "
 
+    # Constantly closes the Cmd line so the player position and info can update
     def postcmd(self, stop, line):
         self.do_EOF(line)
         from Interpreter import StartGame
@@ -12,7 +13,9 @@ class GeneralCommands(Cmd):
         return Cmd.postcmd(self, stop, line)
 
     def do_equip(self, args):
-
+        if not args:
+            print("Command requires an index")
+            return
         inventoryIndex = int(args)
         MAIN_PLAYER.Equip(MAIN_PLAYER.inventory.inventory[inventoryIndex].item)
 
@@ -38,5 +41,15 @@ class GeneralCommands(Cmd):
     def do_EOF(self, line):
         return True
 
-    def do_Default(self, line):
-        print("[SYSTEM]Command does not exist or is entered wrongly")
+    def do_sudo(self, args):
+        if args == "q":
+            MAIN_PLAYER.isAdmin = False
+            print(f"[SYSTEM] Player Admin state switched to {MAIN_PLAYER.isAdmin}")
+            return
+        passw = input("Enter admin password> ")
+        if passw == "root":
+            MAIN_PLAYER.isAdmin = True
+            print("[SYSTEM] Player is now Admin (use [sudo q] to quit)")
+        else:
+            print("[SYSTEM] Wrong password, find the password in RPG/GeneralInterpreter.py")
+

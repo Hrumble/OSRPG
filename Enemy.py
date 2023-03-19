@@ -30,6 +30,7 @@ class Enemy(Entity):
         print("--------------------------------------")
 
     def Die(self, player):
+        self.currentHealth = 0
         print(f"{self.name} has died")
         player.xp += self.xpDrop
         self.DropLoot(player)

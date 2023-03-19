@@ -42,3 +42,11 @@ class FightingConsole(GeneralCommands):
             print("Player failed to Run")
             print("--------------------------------------")
             MAIN_PLAYER.currentFight.EnemyAttack()
+
+    def do_kill(self, args):
+
+        if MAIN_PLAYER.isAdmin:
+            MAIN_PLAYER.currentFight.enemy.currentHealth = 0
+            MAIN_PLAYER.currentFight.PlayerAttack()
+        else:
+            print(MAIN_PLAYER.adminError)

@@ -11,6 +11,7 @@ MAIN_PLAYER.inventory.AddToContainer(ITEM_REGISTRY.GetByID("apple"), 4)
 MAIN_PLAYER.inventory.AddToContainer(ITEM_REGISTRY.GetByID("leather_helmet"))
 
 
+# Updates player current biome and checks for entities on player's position
 def PositionUpdate():
     for biome in BIOMES:
         if biome.CheckForPlayer(MAIN_PLAYER.position):

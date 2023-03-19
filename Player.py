@@ -7,6 +7,8 @@ import json
 class Player(Entity):
     def __init__(self, id, name, health, damage):
         super().__init__(id, name)
+        self.isAdmin = False
+        self.adminError = "[SYSTEM] This command requires admin status (sudo)"
         self.isInteracting = False
         self.currentTrader = 0
         self.currentFight = 0

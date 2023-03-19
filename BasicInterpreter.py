@@ -45,12 +45,16 @@ class BasicConsole(GeneralCommands):
 
     def do_tp(self, args):
         # TP the player to a specific spot on the map (Admin)
-        args = args.split()
-        xPos = int(args[0])
-        yPos = int(args[1])
+        if (MAIN_PLAYER.isAdmin):
 
-        MAIN_PLAYER.xPos = xPos
-        MAIN_PLAYER.yPos = yPos
+            args = args.split()
+            xPos = int(args[0])
+            yPos = int(args[1])
+
+            MAIN_PLAYER.xPos = xPos
+            MAIN_PLAYER.yPos = yPos
+        else:
+            print(MAIN_PLAYER.adminError)
 
     def do_show(self, args):
         if args == "inventory":
