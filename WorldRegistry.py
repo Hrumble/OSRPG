@@ -35,7 +35,7 @@ ITEM_REGISTRY.AddToRegistry(Item("feather", "Feather", 10))
 ITEM_REGISTRY.AddToRegistry(Item("spike", "Spike", 23))
 ITEM_REGISTRY.AddToRegistry(Item("golden_beak", "Golden Beak", 180))
 
-#consumable#
+#Consumable#
 ITEM_REGISTRY.AddToRegistry(ConsumableItem("apple", "Apple", 2, 0.1))
 ITEM_REGISTRY.AddToRegistry(ConsumableItem("pie", "Pie", 5, 0.15))
 ITEM_REGISTRY.AddToRegistry(ConsumableItem("small_potion", "Small Potion", 10, 0.2))
