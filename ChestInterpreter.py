@@ -7,7 +7,7 @@ class ChestConsole(GeneralCommands):
     prompt = "CHEST>> "
 
     def do_open(self, args):
-        MAIN_PLAYER.currentChest.Open()
+        MAIN_PLAYER.currentChest.Open(MAIN_PLAYER)
         MAIN_PLAYER.currentBiome.KillEntity(MAIN_PLAYER.currentChest)
 
     def do_leave(self, args):

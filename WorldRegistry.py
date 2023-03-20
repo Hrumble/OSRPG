@@ -7,6 +7,7 @@ from WeaponItem import *
 from ArmorItem import *
 from LootTable import *
 from Trader import *
+from Chest import *
 
 # See Registry.py for more info
 ITEM_REGISTRY = Registry()
@@ -87,6 +88,9 @@ ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5
 ENTITY_REGISTRY.AddToRegistry(Trader("forest_trader", "Forest Trader", 1.7,
                                      ["vine_whip", "leaves", "forest_spore", "medium_potion"],
                                      [1, 5, 3, 2]))
+
+ENTITY_REGISTRY.AddToRegistry(Chest("basic_chest", "Basic Chest", fierce_eagle_table))
+
 
 
 

@@ -19,17 +19,15 @@ class Chest(Entity):
         self.inventory.DisplayInventory()
 
     def OnSpawn(self):
-        self.PopulateChest()
-
-    def PopulateChest(self):
-        pass
+        # When chest spawns populate its inventory with items from loot table
+        self.inventory.inventory = self.lootTable.GetInventoryItems()
 
     def GetContents(self, player):
-        print(f"- {player.name} has opened the chest -")
+        print(f"-- {player.name} has opened the chest --")
         from WorldRegistry import ITEM_REGISTRY
         for inventoryItem in self.inventory.inventory:
             player.inventory.AddToContainer(ITEM_REGISTRY.GetByID(inventoryItem.item.ID), inventoryItem.quantity)
-            print(f"- You got {inventoryItem.name} x{inventoryItem.quantity} from {self.name}")
+            print(f"- You got {inventoryItem.item.name} x{inventoryItem.quantity} from {self.name}")
         print("-----------------------------------")
 
     def Open(self, player):

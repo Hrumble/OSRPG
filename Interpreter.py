@@ -1,3 +1,4 @@
+import ChestInterpreter
 import FightingInterpreter
 import TradingInterpreter
 from PlayerManager import *
@@ -6,6 +7,7 @@ import BasicInterpreter
 from Fight import *
 from WorldRegistry import *
 import FightingInterpreter
+import ChestInterpreter
 
 
 def StartGame():
@@ -18,3 +20,5 @@ def StartGame():
             TradingInterpreter.TradingConsole().cmdloop()
         if MAIN_PLAYER.state == StateMachine.Fighting:
             FightingInterpreter.FightingConsole().cmdloop()
+        if MAIN_PLAYER.state == StateMachine.OpeningChest:
+            ChestInterpreter.ChestConsole().cmdloop()

@@ -43,7 +43,7 @@ class Container:
                 return
         self.inventory.append(InventoryItem(itemToAdd, quantityToAdd))
 
-    def RemoveFromContainer(self, itemToRemove, quantityToRemove = 1):
+    def RemoveFromContainer(self, itemToRemove, quantityToRemove=1):
         for inventoryItem in self.inventory:
             if inventoryItem.item.ID == itemToRemove.ID:
                 if inventoryItem.quantity < quantityToRemove:

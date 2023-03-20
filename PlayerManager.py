@@ -21,5 +21,4 @@ def PositionUpdate():
             # Each entity has its own interact function
             entity.Interact(MAIN_PLAYER)
     # Uncomment to get access to every enemy on the map
-    #print([entity.position for entity in MAIN_PLAYER.currentBiome.map])
-    #print([entity.name for entity in MAIN_PLAYER.currentBiome.map])
+    print([f"{entity.name} : {entity.position}" for entity in MAIN_PLAYER.currentBiome.map])
