@@ -1,16 +1,12 @@
-from Entity import *
+from InventoryEntity import InventoryEntity
 from Container import *
 from Player import StateMachine
 
-class Trader(Entity):
+
+class Trader(InventoryEntity):
     def __init__(self, id, name, resellRate, tradesID, quantities):
         super().__init__(id, name)
         self.resellRate = resellRate
-        self.inventory = Container(f"{self.name}\'s inventory")
-        from WorldRegistry import ITEM_REGISTRY
-        for i in range(len(tradesID)):
-            item = ITEM_REGISTRY.GetByID(tradesID[i])
-            self.inventory.AddToContainer(item, quantities[i])
 
     def BuyFromPlayer(self, index, quantity, player):
         item = player.inventory.inventory[index].item

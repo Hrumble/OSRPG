@@ -1,17 +1,17 @@
-from Entity import *
+from InventoryEntity import InventoryEntity
 import random
 from Player import StateMachine
 from Fight import *
+from Container import *
 
-class Enemy(Entity):
-    def __init__(self, id, name, baseHealth, baseDamage, lootTable, xpDrop = 5):
+
+class Enemy(InventoryEntity):
+    def __init__(self, id, name, baseHealth, baseDamage, xpDrop = 5):
         super().__init__(id, name)
         self._damage = baseDamage
         self._health = baseHealth
-        self.lootTable = lootTable
         self.xpDrop = 5
         self.level = 0
-        self.currentHealth = 0
 
     @property
     def damage(self):
@@ -22,9 +22,8 @@ class Enemy(Entity):
         return self.level + self._health
 
     def DropLoot(self, player):
-        drops = self.lootTable.GetInventoryItems()
         print(f"----- {self.name} dropped -----")
-        for inventoryItem in drops:
+        for inventoryItem in self.inventory.inventory:
             print(f"{inventoryItem.item.name} x{inventoryItem.quantity}")
             player.inventory.AddToContainer(inventoryItem.item, inventoryItem.quantity)
         print("--------------------------------------")

@@ -1,0 +1,8 @@
+{
+  "items": {
+    "feather": 2,
+    "golden_beak": 1,
+    "claw": 2
+  },
+  "chance": [70, 4, 20]
+}

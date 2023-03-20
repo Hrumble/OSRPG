@@ -1,0 +1,9 @@
+{
+  "items": {
+    "fur": 1,
+    "wolf_fang": 1,
+    "claw": 1,
+    "sharp_tooth": 1
+  },
+  "chance": [90, 20, 10, 8]
+}

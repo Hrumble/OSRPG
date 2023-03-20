@@ -1,9 +1,9 @@
 import WorldRegistry
-from Entity import *
+from InventoryEntity import InventoryEntity
 from Container import *
 from Player import StateMachine
 
-class Chest(Entity):
+class Chest(InventoryEntity):
     def __init__(self, id, name, lootTable, requiresKey=False, keyID="no_id"):
         super().__init__(id, name)
         self.inventory = Container(name)
@@ -17,10 +17,6 @@ class Chest(Entity):
         player.currentChest = self
         print(f"----- you have spotted a {self.name} -----")
         self.inventory.DisplayInventory()
-
-    def OnSpawn(self):
-        # When chest spawns populate its inventory with items from loot table
-        self.inventory.inventory = self.lootTable.GetInventoryItems()
 
     def GetContents(self, player):
         print(f"-- {player.name} has opened the chest --")

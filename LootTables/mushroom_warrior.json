@@ -1,0 +1,7 @@
+{
+  "items": {
+    "mushroom_spore": 2,
+    "mushroom_cap": 1
+  },
+  "chance": [60, 10]
+}

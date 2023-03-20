@@ -1,0 +1,7 @@
+{
+  "items": {
+    "tree_bark": 2,
+    "sharp_tooth": 1
+  },
+  "chance": [60, 10]
+}
