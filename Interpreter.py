@@ -15,6 +15,6 @@ def StartGame():
         if MAIN_PLAYER.state == StateMachine.Basic:
             BasicInterpreter.BasicConsole().cmdloop()
         if MAIN_PLAYER.state == StateMachine.Trading:
-            TradingInterpreter.TradingConsole.cmdloop()
+            TradingInterpreter.TradingConsole().cmdloop()
         if MAIN_PLAYER.state == StateMachine.Fighting:
             FightingInterpreter.FightingConsole().cmdloop()

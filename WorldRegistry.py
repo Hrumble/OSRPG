@@ -81,7 +81,6 @@ ENTITY_REGISTRY.AddToRegistry(Enemy("mushroom_warrior", "Mushroom Warrior", 6, 3
 ENTITY_REGISTRY.AddToRegistry(Enemy("desert_spider", "Desert Spider", 10, 4, desert_spider_table))
 ENTITY_REGISTRY.AddToRegistry(Enemy("angry_log", "Angry Log", 17, 6, angry_log_table))
 ENTITY_REGISTRY.AddToRegistry(Enemy("angry_cacti", "Angry Cacti", 12, 7, angry_cacti_table))
-
 ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5,
                                      ["leather_helmet", "leather_leggings", "pie", "small_potion"],
                                      [2, 1, 10, 6]))

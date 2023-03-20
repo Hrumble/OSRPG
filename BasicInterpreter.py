@@ -61,7 +61,7 @@ class BasicConsole(GeneralCommands):
             MAIN_PLAYER.inventory.DisplayInventory()
         if args == "equipped":
             MAIN_PLAYER.ShowEquipment()
-        if args == "stat":
+        if args == "stats":
             MAIN_PLAYER.ShowStats()
         if args == "position":
             print(f"{MAIN_PLAYER.xPos} Latitude {MAIN_PLAYER.yPos} Longitude")

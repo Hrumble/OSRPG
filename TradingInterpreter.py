@@ -10,16 +10,19 @@ class TradingConsole(GeneralCommands):
     def do_buy(self, args):
         args = args.split()
         # if no quantity is specified, set it to 1
-        if len(args == 1):
+        if len(args) == 1:
             args[1] = 1
-        MAIN_PLAYER.currentTrader.SellToPlayer(args[0], args[1], MAIN_PLAYER)
+        if args[1] == "all":
+            args[1] = MAIN_PLAYER.currentTrader.inventory.inventory[int(args[0])].quantity
+        MAIN_PLAYER.currentTrader.SellToPlayer(int(args[0]), args[1], MAIN_PLAYER)
 
     def do_sell(self, args):
-
         args = args.split()
-        if len(args == 1):
-            args[1] = 1
-        MAIN_PLAYER.currentTrader.BuyFromPlayer(args[0], args[1], MAIN_PLAYER)
+        if len(args) == 1:
+            args.append(1)
+        if args[1] == "all":
+            args[1] = MAIN_PLAYER.inventory.inventory[int(args[0])].quantity
+        MAIN_PLAYER.currentTrader.BuyFromPlayer(int(args[0]), int(args[1]), MAIN_PLAYER)
 
     def do_show(self, args):
 
@@ -29,7 +32,7 @@ class TradingConsole(GeneralCommands):
             MAIN_PLAYER.ShowEquipment()
         if args == "trade":
             MAIN_PLAYER.currentTrader.ShowTrades()
-        if args == "stat":
+        if args == "stats":
             MAIN_PLAYER.ShowStats()
 
     def do_leave(self, args):

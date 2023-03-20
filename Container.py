@@ -47,7 +47,7 @@ class Container:
         for inventoryItem in self.inventory:
             if inventoryItem.item.ID == itemToRemove.ID:
                 if inventoryItem.quantity < quantityToRemove:
-                    print(f"[System]You don't have enough of {itemToRemove} in inventory")
+                    print(f"[System] You don't have enough of {itemToRemove} in inventory")
                     return False
                 inventoryItem.quantity -= quantityToRemove
 

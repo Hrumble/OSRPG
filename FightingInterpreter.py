@@ -16,7 +16,7 @@ class FightingConsole(GeneralCommands):
             MAIN_PLAYER.inventory.DisplayInventory()
         if args == "equipped":
             MAIN_PLAYER.ShowEquipment()
-        if args == "stat":
+        if args == "stats":
             MAIN_PLAYER.ShowStats()
     def do_help(self, args):
         print("----- Fighting Help -----")

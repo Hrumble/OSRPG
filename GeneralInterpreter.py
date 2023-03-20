@@ -53,3 +53,22 @@ class GeneralCommands(Cmd):
         else:
             print("[SYSTEM] Wrong password, find the password in RPG/GeneralInterpreter.py")
 
+    def do_give(self, args):
+        if not MAIN_PLAYER.isAdmin:
+            print(MAIN_PLAYER.adminError)
+            return
+        if not args:
+            print("[SYSTEM] You need to specify an item id")
+            return
+
+        args = args.split()
+
+        if len(args) == 1:
+            args[1] = 1
+
+        item = ITEM_REGISTRY.GetByID(args[0])
+        if not item:
+            print("[SYSTEM] The ID specified does not exist")
+            return
+        MAIN_PLAYER.inventory.AddToContainer(item, int(args[1]))
+

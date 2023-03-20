@@ -13,4 +13,5 @@ class Registry:
         for registeredItem in self.list:
             if registeredItem.ID == ID:
                 return copy.deepcopy(registeredItem)
+        print(f"{ID} does not exist in the registry")
         return False
