@@ -4,12 +4,11 @@ from Container import *
 from Player import StateMachine
 
 class Chest(InventoryEntity):
-    def __init__(self, id, name, lootTable, requiresKey=False, keyID="no_id"):
+    def __init__(self, id, name, requiresKey=False, keyID="no_id"):
         super().__init__(id, name)
         self.inventory = Container(name)
         self.requiresKey = requiresKey
         self.keyID = keyID  # Item ID
-        self.lootTable = lootTable  # class LootTable
 
     def Interact(self, player):
         player.isInteracting = True
