@@ -15,3 +15,6 @@ class Entity:
 
     def Die(self):
         print(f"{self.name} Died")
+
+    def Interact(self):
+        pass

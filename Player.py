@@ -127,6 +127,7 @@ class StateMachine:
     Basic = "Basic"
     Trading = "Trading"
     Fighting = "Fighting"
+    OpeningChest = "Opening Chest"
 
 
 

@@ -46,8 +46,11 @@ class Trader(Entity):
         print(f"Resell Rate of: {self.resellRate}")
         i = 0
         while i < len(self.inventory.inventory):
+            # Gets the inventoryItem
             inventoryItemI = self.inventory.inventory[i]
             price = int(inventoryItemI.item.value * self.resellRate)
+            # if this is not the last item in the list print it on two separate lines
+            # Otherwise print a single line
             if i != len(self.inventory.inventory) - 1:
                 inventoryItemI1 = self.inventory.inventory[i + 1]
                 price1 = int(inventoryItemI1.item.value * self.resellRate)
