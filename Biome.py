@@ -59,9 +59,15 @@ class Biome:
         self.AfterPopulate()
 
     def BeforePopulate(self):
+        """
+                    Function is called right before the biome has been populated
+        """
         pass
 
     def AfterPopulate(self):
+        """
+            Function is called right after the biome has been populated
+        """
         pass
 
     def KillEntity(self, entity):

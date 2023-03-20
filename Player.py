@@ -97,6 +97,7 @@ class Player(Entity):
             self.inventory.AddToContainer(self.equipment[equipmentPiece.slot])
         self.equipment[equipmentPiece.slot] = equipmentPiece
         self.inventory.RemoveFromContainer(equipmentPiece)
+        equipmentPiece.OnEquip()
         print(f"[Player] Equipped {equipmentPiece.name} on {equipmentPiece.slot}")
         if not self.state == StateMachine.Fighting:
             self.currentArmorHealth = self.maxArmorHealth
@@ -105,6 +106,7 @@ class Player(Entity):
         equipmentPiece = self.equipment[slot]
         self.inventory.AddToContainer(equipmentPiece)
         self.equipment[slot] = 0
+        equipmentPiece.OnUnequip()
         print(f"[Player] Unequipped {equipmentPiece.name} off {equipmentPiece.slot}")
 
     def ShowEquipment(self):

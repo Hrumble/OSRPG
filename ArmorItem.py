@@ -1,13 +1,14 @@
-from Item import *
+from EquipableItem import EquipableItem
 
 
-class ArmorItem(Item):
+class ArmorItem(EquipableItem):
+
     headSlot = "head"
     chestSlot = "chest"
     legSlot = "legs"
     feetSlot = "feet"
 
-    def __init__(self, id, name, value, protection, slot, craftable = True):
+    def __init__(self, id, name, value, protection, slot, craftable=True):
         super().__init__(id, name, value, craftable)
         self.protection = protection
         self.slot = slot

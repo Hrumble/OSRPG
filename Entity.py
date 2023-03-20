@@ -17,7 +17,13 @@ class Entity:
         print(f"{self.name} Died")
 
     def Interact(self):
+        """
+            Function is called when player is on the same tile as entity
+        """
         pass
 
     def OnSpawn(self):
+        """
+            Function is called when entity spawns in the biome
+        """
         pass
