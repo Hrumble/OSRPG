@@ -13,6 +13,7 @@ class Player(Entity):
         self.currentTrader = 0
         self.currentFight = 0
         self.currentBiome = 0
+        self.currentChest = 0
         self.state = StateMachine.Basic
         self._damage = damage
         self.xp = 0

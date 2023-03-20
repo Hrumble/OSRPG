@@ -36,6 +36,7 @@ class Biome:
         return False
 
     def Populate(self, effective):
+        self.BeforePopulate()
         mobID = []
         for i in range(effective):
             mobID.append(random.choice(self.entitiesID))
@@ -49,11 +50,19 @@ class Biome:
                 if randLevel < 0: randLevel = 0
                 mob.level = randLevel
             self.map.append(mob)
+            mob.OnSpawn()
         for entity in self.map:
             entity1pos = entity.position
             for entity2 in self.map:
                 if entity2.position == entity1pos:
                     self.MoveEntity(random.choice([entity, entity2]), self.GetRandomPosition())
+        self.AfterPopulate()
+
+    def BeforePopulate(self):
+        pass
+
+    def AfterPopulate(self):
+        pass
 
     def KillEntity(self, entity):
         self.map.remove(entity)

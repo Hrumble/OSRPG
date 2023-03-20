@@ -18,3 +18,6 @@ class Entity:
 
     def Interact(self):
         pass
+
+    def OnSpawn(self):
+        pass

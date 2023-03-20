@@ -36,8 +36,6 @@ class TradingConsole(GeneralCommands):
             MAIN_PLAYER.ShowStats()
 
     def do_leave(self, args):
-        if args:
-            print("(No arguments need to be specified)")
         print("-----------------------------------")
         print("[WORLD] The trader wandered away...")
         print("-----------------------------------")
