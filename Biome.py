@@ -1,4 +1,4 @@
-from WorldRegistry import *
+from Registries.WorldRegistry import *
 import random
 
 

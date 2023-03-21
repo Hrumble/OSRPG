@@ -1,4 +1,5 @@
-from Item import *
+from Items.Item import *
+
 
 class Container:
     def __init__(self, name):
@@ -36,20 +37,30 @@ class Container:
 
         return [hasItem, hasQuantity, itemQuantity]
 
-    def AddToContainer(self, itemToAdd, quantityToAdd = 1):
+
+    def AddToContainer(self, itemID, quantityToAdd=1):
+        from Registries.WorldRegistry import ITEM_REGISTRY
+        from PlayerManager import MAIN_PLAYER
+        item = ITEM_REGISTRY.GetByID(itemID)
         for inventoryItem in self.inventory:
-            if inventoryItem.item.ID == itemToAdd.ID:
+            if inventoryItem.item.ID == itemID:
                 inventoryItem.quantity += quantityToAdd
                 return
-        self.inventory.append(InventoryItem(itemToAdd, quantityToAdd))
+        self.inventory.append(InventoryItem(item, quantityToAdd))
+        if MAIN_PLAYER.debug:
+            print(f"[DEBUG] {quantityToAdd}x {itemID} has been added to inventory")
 
-    def RemoveFromContainer(self, itemToRemove, quantityToRemove=1):
+    def RemoveFromContainer(self, itemID, quantityToRemove=1):
+        from PlayerManager import MAIN_PLAYER
+        from Registries.WorldRegistry import ITEM_REGISTRY
         for inventoryItem in self.inventory:
-            if inventoryItem.item.ID == itemToRemove.ID:
+            if inventoryItem.item.ID == itemID:
                 if inventoryItem.quantity < quantityToRemove:
-                    print(f"[System] You don't have enough of {itemToRemove} in inventory")
+                    print(f"[System] You don't have enough of {ITEM_REGISTRY.GetName(itemID)} in inventory")
                     return False
                 inventoryItem.quantity -= quantityToRemove
+                if MAIN_PLAYER.debug:
+                    print(f"[DEBUG] {quantityToRemove}x {itemID} has been removed from {self.name}")
 
                 if inventoryItem.quantity <= 0:
                     self.inventory.remove(inventoryItem)

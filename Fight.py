@@ -1,5 +1,4 @@
 import time
-from Player import StateMachine
 
 class Fight:
     def __init__(self, player, enemy):
@@ -10,6 +9,7 @@ class Fight:
         print(f"[WORLD] {self.player.name} dealt {self.player.damage} damage to {self.enemy.name}")
         self.enemy.currentHealth -= self.player.damage
         time.sleep(1)
+        from Entities.Player import StateMachine
         if self.enemy.currentHealth <= 0:
             self.enemy.Die(self.player)
             self.player.state = StateMachine.Basic
