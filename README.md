@@ -130,6 +130,9 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 =================================================
 
 ================Adding=Loot=Tables===============
+!THIS IS OUTDATED!
+The loots tables don't work like that anymore, they work with json files. (I'll update the README soon in the meantime
+refer to OSRPG/LootTables/ to find the current loot tables and try understanding for yourself)
 
 1. In WorldRegistry.py go under all the existing tables under #Loot Tables
 
