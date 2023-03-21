@@ -9,8 +9,8 @@ from Trader import *
 from Chest import *
 
 # See Registry.py for more info
-ITEM_REGISTRY = Registry()
-ENTITY_REGISTRY = Registry()
+ITEM_REGISTRY = Registry("Item Registry")
+ENTITY_REGISTRY = Registry("Entity Registry")
 
 def Items():
     return ITEM_REGISTRY

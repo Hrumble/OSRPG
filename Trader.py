@@ -7,8 +7,12 @@ class Trader(InventoryEntity):
     def __init__(self, id, name, resellRate, tradesID, quantities):
         super().__init__(id, name)
         self.resellRate = resellRate
+        self.type = "Trader"
 
     def BuyFromPlayer(self, index, quantity, player):
+        if len(player.inventory.inventory) <= index:
+            print("[SYSTEM] The index specified does not contain an item")
+            return
         item = player.inventory.inventory[index].item
         if player.inventory.RemoveFromContainer(item, quantity):
             player.money += item.value * quantity

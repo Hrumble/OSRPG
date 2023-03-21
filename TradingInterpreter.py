@@ -11,7 +11,7 @@ class TradingConsole(GeneralCommands):
         args = args.split()
         # if no quantity is specified, set it to 1
         if len(args) == 1:
-            args[1] = 1
+            args.append(1)
         if args[1] == "all":
             args[1] = MAIN_PLAYER.currentTrader.inventory.inventory[int(args[0])].quantity
         MAIN_PLAYER.currentTrader.SellToPlayer(int(args[0]), args[1], MAIN_PLAYER)
@@ -30,7 +30,7 @@ class TradingConsole(GeneralCommands):
             MAIN_PLAYER.inventory.DisplayInventory()
         if args == "equipped":
             MAIN_PLAYER.ShowEquipment()
-        if args == "trade":
+        if args == "trades":
             MAIN_PLAYER.currentTrader.ShowTrades()
         if args == "stats":
             MAIN_PLAYER.ShowStats()

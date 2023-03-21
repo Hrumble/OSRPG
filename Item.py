@@ -17,6 +17,7 @@ class Item:
     def Info(self):
         print(f"----- {self.name} -----")
         print(f"Type: [{self.type}]")
+        print(f"Value: {self.value}")
         self.ExtraInfo()
         self.ShowCrafting()
         print("------------------------")

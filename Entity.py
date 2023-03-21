@@ -4,6 +4,16 @@ class Entity:
         self.name = name
         self.xPos = 0
         self.yPos = 0
+        self.type = "Unspecified Entity"
+
+    def Info(self):
+        print(f"----- {self.name} -----")
+        print(f"Type: [{self.type}]")
+        self.ExtraInfo()
+        print("------------------------")
+
+    def ExtraInfo(self):
+        pass
 
     @property
     def position(self):

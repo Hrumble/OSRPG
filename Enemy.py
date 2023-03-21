@@ -12,6 +12,7 @@ class Enemy(InventoryEntity):
         self._health = baseHealth
         self.xpDrop = 5
         self.level = 0
+        self.type = "Enemy"
 
     @property
     def damage(self):

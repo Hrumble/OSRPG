@@ -15,10 +15,12 @@ MAIN_PLAYER.inventory.AddToContainer(ITEM_REGISTRY.GetByID("leather_helmet"))
 def PositionUpdate():
     for biome in BIOMES:
         if biome.CheckForPlayer(MAIN_PLAYER.position):
-            MAIN_PLAYER.currentBiome = biome
+            if MAIN_PLAYER.currentBiome != biome:
+                print(f"[WORLD] Player has entered the {biome.name} of Level {biome.level}")
+                MAIN_PLAYER.currentBiome = biome
     for entity in MAIN_PLAYER.currentBiome.map:
         if MAIN_PLAYER.position == entity.position and not MAIN_PLAYER.isInteracting:
             # Each entity has its own interact function
             entity.Interact(MAIN_PLAYER)
-    # Uncomment to get access to every enemy on the map
-    print([f"{entity.name} : {entity.position}" for entity in MAIN_PLAYER.currentBiome.map])
+    # Uncomment to get access to every enemy on the map and their positions
+    # print([f"{entity.name} : {entity.position}" for entity in MAIN_PLAYER.currentBiome.map])

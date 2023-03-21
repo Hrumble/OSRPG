@@ -1,4 +1,6 @@
 from PlayerManager import *
+from WorldRegistry import ITEM_REGISTRY
+from WorldRegistry import ENTITY_REGISTRY
 from cmd import Cmd
 
 class GeneralCommands(Cmd):
@@ -35,9 +37,20 @@ class GeneralCommands(Cmd):
             print("[SYSTEM] You can\'t consume that")
 
     def do_info(self, args):
+        if not args:
+            print("Specify an item ID to get its info (if the item is Example Item, the id is example_item)")
+            return
         from WorldRegistry import ITEM_REGISTRY
-        ITEM_REGISTRY.GetByID(args).Info()
-
+        from WorldRegistry import ENTITY_REGISTRY
+        item = ITEM_REGISTRY.GetByID(args)
+        entity = ENTITY_REGISTRY.GetByID(args)
+        if not item:
+            if not entity:
+                return
+            else:
+                entity.Info()
+        else:
+            item.Info()
     def do_EOF(self, line):
         return True
 
@@ -71,4 +84,15 @@ class GeneralCommands(Cmd):
             print("[SYSTEM] The ID specified does not exist")
             return
         MAIN_PLAYER.inventory.AddToContainer(item, int(args[1]))
+
+    def do_list(self, args):
+        if not MAIN_PLAYER.isAdmin:
+            print(MAIN_PLAYER.adminError)
+            return
+        if args == "items":
+            ITEM_REGISTRY.ListItems()
+        if args == "entities":
+            ENTITY_REGISTRY.ListItems()
+        else:
+            print("You need to specify a registry to list: list <items/entities>")
 

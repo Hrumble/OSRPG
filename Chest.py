@@ -9,6 +9,7 @@ class Chest(InventoryEntity):
         self.inventory = Container(name)
         self.requiresKey = requiresKey
         self.keyID = keyID  # Item ID
+        self.type = "Chest"
 
     def Interact(self, player):
         player.isInteracting = True
