@@ -11,7 +11,7 @@ This one is pretty straightforward
 3. Below all the already existing items add
 
 ```python
-    ITEM_REGISTRY.AddToRegistry(Item("item_id", "Item Name", value))
+ITEM_REGISTRY.AddToRegistry(Item("item_id", "Item Name", value))
 ```
 
 4. Replace item_id by your item's ID, Item Name by your item's name, and the value by your
@@ -20,7 +20,7 @@ desired value
 5. Adding a "Mushroom Spore" Item with a price of 10 would look like:
 
 ```python
-    ITEM_REGISTRY.AddToRegistry(Item("mushroom_spore", "Mushroom Spore", 10))
+ITEM_REGISTRY.AddToRegistry(Item("mushroom_spore", "Mushroom Spore", 10))
 ```
 
 =================================================
@@ -34,14 +34,14 @@ Pretty much as easy
 3. Below all the already existing consumables add
 
 ```python
-    ITEM_REGISTRY.AddToRegistry(ConsumableItem("consumable_id", "Consumable Name", value, health_modifier, craftable))
+ITEM_REGISTRY.AddToRegistry(ConsumableItem("consumable_id", "Consumable Name", value, health_modifier, craftable))
 ```
 
 4. replace everything like with the item:
 
 ```
-    health_modifier = value between 0 and 1 to indicate how much the consumable heals
-    craftable = True or False on whether or not the item is craftable
+health_modifier = value between 0 and 1 to indicate how much the consumable heals
+craftable = True or False on whether or not the item is craftable
 ```
 
 5. !CAUTION! if craftable is set to True, you MUST add a recipe. (See below on how to add recipes)
@@ -94,7 +94,7 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 2. add this line:
 
 ```python
-    ITEM_REGISTRY.AddToRegistry(WeaponItem("weapon_id", "Weapon Name", value, damage))
+ITEM_REGISTRY.AddToRegistry(WeaponItem("weapon_id", "Weapon Name", value, damage))
 ```
 
 3. Replace with your desired values
@@ -111,16 +111,16 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 2. Add this line:
 
 ```python
-    ITEM_REGISTRY.AddToRegistry(ArmorItem("armor_id", "Armor Name", value, protection, ArmorItem.slot_name))
+ITEM_REGISTRY.AddToRegistry(ArmorItem("armor_id", "Armor Name", value, protection, ArmorItem.slot_name))
 ```
 
 3. There are 4 total possible slots:
 
 ```
-    ArmorItem.headSlot
-    ArmorItem.chestSlot
-    ArmorItem.legSlot
-    ArmorItem.feetSlot
+ArmorItem.headSlot
+ArmorItem.chestSlot
+ArmorItem.legSlot
+ArmorItem.feetSlot
 ```
 
 =================================================
@@ -164,7 +164,7 @@ Here is an example of the slime's loot table
 2. Add this line:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Enemy("enemy_id", "Enemy Name", baseHealth, baseDamage))
+ENTITY_REGISTRY.AddToRegistry(Enemy("enemy_id", "Enemy Name", baseHealth, baseDamage))
 ```
 
 3. Replace all the values, baseHealth and baseDamage is just the health and damage of the enemy
@@ -172,7 +172,7 @@ Here is an example of the slime's loot table
 Here an example of the slime enemy:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Enemy("slime", "Slime", 10, 2, slime_table))
+ENTITY_REGISTRY.AddToRegistry(Enemy("slime", "Slime", 10, 2))
 ```
 4. Do not forget to add a loot table, see the Loot Table section for more info
 
@@ -185,7 +185,7 @@ Here an example of the slime enemy:
 2. Add this line:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Trader("trader_id", "Trader Name", resale_rate))
+ENTITY_REGISTRY.AddToRegistry(Trader("trader_id", "Trader Name", resale_rate))
 ```
 
 3. Replace all the values
@@ -196,7 +196,7 @@ Here an example of the slime enemy:
 Here is the example of a Wandering Trader:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5))
+ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5))
 ```
 
 5. Do not forget to add a loot table, see the Loot Table section for more info
@@ -209,22 +209,22 @@ Here is the example of a Wandering Trader:
 2. Add this line:
 
 ```python
-    BIOMES.append(Biome("Biome Name", [initial_X_position, initial_Y_position],
+BIOMES.append(Biome("Biome Name", [initial_X_position, initial_Y_position],
     biome_radius, ["enemy_id1", "enemy_id2", "enemy_id3", "enemy_id4"], enemy_level, enemy_effective))
 ```
 
 3. Replace all the values, here is a quick explanation of some of them:
 
 ```
-    enemy_level = the level around which the enemies will be inside the biome
-    enemy_effective = How much enemies are in the biome
-    [initial_X_position, initial_Y_position] = the position of the center of the biome
-    biome_radius = How much the biome extends beyond its center
+enemy_level = the level around which the enemies will be inside the biome
+enemy_effective = How much enemies are in the biome
+[initial_X_position, initial_Y_position] = the position of the center of the biome
+biome_radius = How much the biome extends beyond its center
 ```
 
 Here is an example of the starting biome
 ```python
-    BIOMES.append(Biome("Starter Plains", [0, 0],
+BIOMES.append(Biome("Starter Plains", [0, 0],
     10, ["slime", "spider", "wolf", "wandering_trader"], 0, 60))
 ```
 The biome is centered at 0 0 and makes a square going from [-10, -10] to [10, 10]
