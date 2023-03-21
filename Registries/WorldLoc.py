@@ -5,7 +5,7 @@ BIOMES = []
 #Biomes# name, position, radius, entities, level, effective
 
 BIOMES.append(Biome("Starter Plains", [0, 0], 10,
-                    ["slime", "spider", "wolf", "wandering_trader", "basic_chest"],
+                    ["slime", "spider", "wolf", "wandering_trader", "basic_chest", "owl", "squirrel", "flying_fish", "rabbit"],
                     0, 60))
 BIOMES.append(Biome("Shady Forest", [0, -20], 10,
                     ["mushroom_warrior", "slime", "forest_trader", "angry_log"],

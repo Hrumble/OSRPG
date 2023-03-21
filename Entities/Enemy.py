@@ -5,7 +5,7 @@ from Container import *
 
 
 class Enemy(InventoryEntity):
-    def __init__(self, id, name, baseHealth, baseDamage, xpDrop = 5):
+    def __init__(self, id, name, baseHealth, baseDamage, xpDrop=5):
         super().__init__(id, name)
         self._damage = baseDamage
         self._health = baseHealth
@@ -36,7 +36,7 @@ class Enemy(InventoryEntity):
 
     def Interact(self, player):
         self.currentHealth = self.maxHealth
-        from Player import StateMachine
+        from Entities.Player import StateMachine
         player.isInteracting = True
         player.state = StateMachine.Fighting
         player.currentFight = Fight(player, self)
