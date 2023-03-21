@@ -6,9 +6,7 @@ keep reading to get a tutorial on adding anything in the game as it is.
 
 This one is pretty straightforward
 
-1. Open WorldRegistry.py
-
-2. Go under "#Items# id, name, value"
+1. Open Registries/ItemRegistry.py
 
 3. Below all the already existing items add
 
@@ -31,11 +29,9 @@ desired value
 
 Pretty much as easy
 
-1. Open WorldRegistry.py
+1. Open Registries/ConsumableItemRegistry.py
 
-2. Go under "#Consumables"
-
-3. Below all the already existing items add
+3. Below all the already existing consumables add
 
 ```python
     ITEM_REGISTRY.AddToRegistry(ConsumableItem("consumable_id", "Consumable Name", value, health_modifier, craftable))
@@ -93,7 +89,7 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 
 ================Adding=Weapons===================
 
-1. in WorldRegistry.py go under all the existing weapons under #Weapons
+1. in Registries/WeaponItemRegistry.py go under all the existing weapons
 
 2. add this line:
 
@@ -110,7 +106,7 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 
 ================Adding=Armor=====================
 
-1. in WorldRegistry.py go under all the existing armor items under #Armor
+1. in Registries/ArmorItemRegistry.py go under all the existing armor items
 
 2. Add this line:
 
@@ -130,35 +126,45 @@ this item requires 3 Wolf fangs and 1 Sturdy Iron Sword to be crafted
 =================================================
 
 ================Adding=Loot=Tables===============
-!THIS IS OUTDATED!
-The loots tables don't work like that anymore, they work with json files. (I'll update the README soon in the meantime
-refer to OSRPG/LootTables/ to find the current loot tables and try understanding for yourself)
 
-1. In WorldRegistry.py go under all the existing tables under #Loot Tables
+1. In OSRPG/LootTables/ create a .json file with the name set to the exact id of your entity
 
 2. Add this line:
 
-```python
-    enemy_id_table = LootTable(["item_id_1", "item_id_2"], [quantity_of_item1, quantity_of_item2], [dropchance_item1,
-    dropchance_item2])
+```json
+{
+  "items": {
+    "example_item1": quantity1,
+    "example_item2": quantity2
+  },
+  "chance": [chance_item1, chance_item2]
+}
 ```
 
 3. Replace all the values. add as much items and quantities as you want.
 
 Here is an example of the slime's loot table
-    slime_table = LootTable(["slimeball", "apple"], [2, 1], [100, 25])
+```json
+{
+  "items": {
+    "slimeball": 2,
+    "apple": 1
+  },
+  "chance": [100, 25]
+}
+```
 (Slime has a 100% chance of dropping 2 slimeballs and 25% chance of dropping 1 apple)
 
 =================================================
 
 ================Adding=Enemies==================
 
-1. In WorldRegistry.py go under all the existing entities under #Entities
+1. In Registries/EnemyRegistry.py go under all the existing entities
 
 2. Add this line:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Enemy("enemy_id", "Enemy Name", baseHealth, baseDamage, enemy_id_table))
+    ENTITY_REGISTRY.AddToRegistry(Enemy("enemy_id", "Enemy Name", baseHealth, baseDamage))
 ```
 
 3. Replace all the values, baseHealth and baseDamage is just the health and damage of the enemy
@@ -168,22 +174,21 @@ Here an example of the slime enemy:
 ```python
     ENTITY_REGISTRY.AddToRegistry(Enemy("slime", "Slime", 10, 2, slime_table))
 ```
+4. Do not forget to add a loot table, see the Loot Table section for more info
 
 =================================================
 
 ================Adding=Traders===================
 
-1. In WorldRegistry.py go under all the existing entities under #Entities
+1. In Registries/TraderRegistry.py go under all the existing entities
 
 2. Add this line:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Trader("trader_id", "Trader Name", resale_rate,
-                                     ["item_id_1", "item_id_2", "item_id_3", "item_id_4"],
-                                     [quantity1, quantity2, quantity3, quantity4]))
+    ENTITY_REGISTRY.AddToRegistry(Trader("trader_id", "Trader Name", resale_rate))
 ```
 
-3. Replace all the values and add as many items and quantities as you want
+3. Replace all the values
 
 4. resale_rate is the price at which the trader will sell you items based on their values.
     a resale rate of 1 would make that trader sell you items at the same price that you sold them to him
@@ -191,10 +196,10 @@ Here an example of the slime enemy:
 Here is the example of a Wandering Trader:
 
 ```python
-    ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5,
-                                     ["leather_helmet", "leather_leggings", "pie", "small_potion"],
-                                     [2, 1, 10, 6]))
+    ENTITY_REGISTRY.AddToRegistry(Trader("wandering_trader", "Wandering Trader", 1.5))
 ```
+
+5. Do not forget to add a loot table, see the Loot Table section for more info
 
 =================================================
 
@@ -224,6 +229,44 @@ Here is an example of the starting biome
 ```
 The biome is centered at 0 0 and makes a square going from [-10, -10] to [10, 10]
 It contains a total of 60 slimes + spiders + wolves + wandering traders each of level 0.
+
+=================================================
+
+===============Admin=Commands====================
+
+The Game has multiple implemented admin commands to make debugging and testing easier
+To enter admin mode, firstly use the command
+````python
+sudo
+````
+you will then be prompted by a password, the password is hardcoded in the game under Interpreters/GeneralInterpreter.py
+do_sudo(self, args), it is "root".
+
+from there you will be able to list items from the item registry or the entity registry
+simply use 
+````python
+list items
+````
+or 
+````python
+list entities
+````
+you can also tp to any spot in the map using
+````python
+tp x y
+````
+you can give yourself any quantity of item using
+````python
+give example_item quantity
+````
+if the quantity is not specified it will simply be one
+
+to Enable debug mode, simply type
+````python
+debug True
+````
+replace True by False to enable or disable
+
 
 =================================================
 
