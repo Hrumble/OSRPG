@@ -68,7 +68,7 @@ class Player(Entity):
         quit()
 
     def Craft(self, itemID):
-        from Registries.WorldRegistry import ITEM_REGISTRY
+        from Registries.Registry import ITEM_REGISTRY
 
         item = ITEM_REGISTRY.GetByID(itemID)
         if not item.craftable:

@@ -3,7 +3,7 @@ from Container import *
 
 
 class Trader(InventoryEntity):
-    def __init__(self, id, name, resellRate, tradesID, quantities):
+    def __init__(self, id, name, resellRate):
         super().__init__(id, name)
         self.resellRate = resellRate
         self.type = "Trader"
@@ -34,7 +34,7 @@ class Trader(InventoryEntity):
             print(f"[{self.name}] You don\'t have enough money for that...")
 
     def Interact(self, player):
-        from Player import StateMachine
+        from Entities.Player import StateMachine
         player.isInteracting = True
         player.state = StateMachine.Trading
         player.currentTrader = self

@@ -10,7 +10,7 @@ class Chest(InventoryEntity):
         self.type = "Chest"
 
     def Interact(self, player):
-        from Player import StateMachine
+        from Entities.Player import StateMachine
         player.isInteracting = True
         player.state = StateMachine.OpeningChest
         player.currentChest = self
@@ -26,7 +26,7 @@ class Chest(InventoryEntity):
 
     def Open(self, player):
         if self.requiresKey:
-            from Registries.WorldRegistry import ITEM_REGISTRY
+            from Registries.Registry import ITEM_REGISTRY
             # checks if item is in inventory no matter the quantity
             if self.inventory.HasItem(self.keyID)[0]:
                 self.inventory.RemoveFromContainer(self.keyID)

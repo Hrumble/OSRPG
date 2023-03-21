@@ -1,4 +1,5 @@
-from Registries.WorldRegistry import *
+from Registries.Registry import ENTITY_REGISTRY
+from Entities.Enemy import Enemy
 import random
 
 

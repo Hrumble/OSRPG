@@ -39,7 +39,7 @@ class Container:
 
 
     def AddToContainer(self, itemID, quantityToAdd=1):
-        from Registries.WorldRegistry import ITEM_REGISTRY
+        from Registries.Registry import ITEM_REGISTRY
         from PlayerManager import MAIN_PLAYER
         item = ITEM_REGISTRY.GetByID(itemID)
         for inventoryItem in self.inventory:
@@ -52,7 +52,7 @@ class Container:
 
     def RemoveFromContainer(self, itemID, quantityToRemove=1):
         from PlayerManager import MAIN_PLAYER
-        from Registries.WorldRegistry import ITEM_REGISTRY
+        from Registries.Registry import ITEM_REGISTRY
         for inventoryItem in self.inventory:
             if inventoryItem.item.ID == itemID:
                 if inventoryItem.quantity < quantityToRemove:

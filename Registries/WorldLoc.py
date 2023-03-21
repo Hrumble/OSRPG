@@ -1,4 +1,3 @@
-from Registries.WorldRegistry import *
 from Biome import *
 
 BIOMES = []

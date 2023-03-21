@@ -1,6 +1,6 @@
 from PlayerManager import *
-from Registries.WorldRegistry import ITEM_REGISTRY
-from Registries.WorldRegistry import ENTITY_REGISTRY
+from Registries.Registry import ITEM_REGISTRY
+from Registries.Registry import ENTITY_REGISTRY
 from cmd import Cmd
 
 class GeneralCommands(Cmd):
@@ -10,7 +10,7 @@ class GeneralCommands(Cmd):
     # Constantly closes the Cmd line so the player position and info can update
     def postcmd(self, stop, line):
         self.do_EOF(line)
-        from Interpreter import StartGame
+        from Interpreters.Interpreter import StartGame
         StartGame()
         return Cmd.postcmd(self, stop, line)
 
@@ -40,8 +40,8 @@ class GeneralCommands(Cmd):
         if not args:
             print("Specify an item ID to get its info (if the item is Example Item, the id is example_item)")
             return
-        from Registries.WorldRegistry import ITEM_REGISTRY
-        from Registries.WorldRegistry import ENTITY_REGISTRY
+        from Registries.Registry import ITEM_REGISTRY
+        from Registries.Registry import ENTITY_REGISTRY
         item = ITEM_REGISTRY.GetByID(args)
         entity = ENTITY_REGISTRY.GetByID(args)
         if not item:

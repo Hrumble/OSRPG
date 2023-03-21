@@ -17,7 +17,7 @@ class InventoryEntity(Entity):
             jsonF = json.load(f)
         items_needed = jsonF["items"]
         chance = jsonF["chance"]
-        from Registries.WorldRegistry import ITEM_REGISTRY
+        from Registries.Registry import ITEM_REGISTRY
         # Check the loot table for item's id and the chance to get that item, then adds it in the inventory
         i = 0
         for id in items_needed:

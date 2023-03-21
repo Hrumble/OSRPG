@@ -1,6 +1,7 @@
 import copy
 
 # A List of entities/items
+
 class Registry:
     def __init__(self, name):
         self.list = []
@@ -27,3 +28,6 @@ class Registry:
     def ListItems(self):
         for item in self.list:
             print(f"{item.name} | {item.ID} : type({item.type})")
+
+ITEM_REGISTRY = Registry("Item Registry")
+ENTITY_REGISTRY = Registry("Entity Registry")
