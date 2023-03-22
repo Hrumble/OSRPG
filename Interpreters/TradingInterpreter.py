@@ -13,7 +13,7 @@ class TradingConsole(GeneralCommands):
             args.append(1)
         if args[1] == "all":
             args[1] = MAIN_PLAYER.currentTrader.inventory.inventory[int(args[0])].quantity
-        MAIN_PLAYER.currentTrader.SellToPlayer(int(args[0]), args[1], MAIN_PLAYER)
+        MAIN_PLAYER.currentTrader.SellToPlayer(int(args[0]), int(args[1]), MAIN_PLAYER)
 
     def do_sell(self, args):
         args = args.split()

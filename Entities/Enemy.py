@@ -9,7 +9,7 @@ class Enemy(InventoryEntity):
         super().__init__(id, name)
         self._damage = baseDamage
         self._health = baseHealth
-        self.xpDrop = 5
+        self.xpDrop = xpDrop
         self.level = 0
         self.type = "Enemy"
 
@@ -31,7 +31,7 @@ class Enemy(InventoryEntity):
     def Die(self, player):
         self.currentHealth = 0
         print(f"{self.name} has died")
-        player.xp += self.xpDrop
+        player.xp += int(self.xpDrop*self.level)
         player.currentArmorHealth = player.maxArmorHealth
         self.DropLoot(player)
 

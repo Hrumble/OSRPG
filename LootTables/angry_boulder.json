@@ -1,0 +1,7 @@
+{
+  "items": {
+    "life_shard" : 1,
+    "stone": 5
+  },
+  "chance": [5, 90]
+}

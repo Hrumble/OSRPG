@@ -1,6 +1,20 @@
 {
   "items": {
-    "stone": 1
+    "troll_claw": 5,
+    "frost_gem" : 4,
+    "goblin_ear": 10,
+    "feather" : 10,
+    "spike": 20,
+    "leaves": 100,
+    "claw": 14,
+    "slimeball": 100,
+    "small_potion": 20,
+    "medium_potion": 15,
+    "big_potion": 10,
+    "extreme_potion" : 5,
+    "slicer": 2,
+    "vine_whip": 1,
+    "sturdy_iron_sword": 1
   },
-  "chance" : [50]
+  "chance" : [40, 10, 15, 70, 60, 10, 50, 40, 100, 100, 100, 100, 60, 50, 40]
 }

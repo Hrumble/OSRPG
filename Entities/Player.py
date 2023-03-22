@@ -39,9 +39,9 @@ class Player(Entity):
     @property
     def damage(self):
         if self.equipment["hand"] != 0:
-            return self._damage + self.equipment["hand"].damage + self.level
+            return self._damage + self.equipment["hand"].damage + int(self.level)
         else:
-            return self._damage + self.level
+            return self._damage + int(self.level)
 
     @property
     def maxArmorHealth(self):
@@ -130,7 +130,7 @@ class Player(Entity):
 
     def UpdateStats(self):
         print(f"{self.currentLevel} vs {self.level}")
-        if self.currentLevel == self.level:
+        if self.currentLevel >= self.level:
             self.currentLevel += 1
             print(f"[WORLD] Player has leveled up Level: {self.currentLevel}")
 
