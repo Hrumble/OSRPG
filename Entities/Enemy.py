@@ -32,6 +32,7 @@ class Enemy(InventoryEntity):
         self.currentHealth = 0
         print(f"{self.name} has died")
         player.xp += self.xpDrop
+        player.currentArmorHealth = player.maxArmorHealth
         self.DropLoot(player)
 
     def Interact(self, player):
@@ -40,11 +41,11 @@ class Enemy(InventoryEntity):
         player.isInteracting = True
         player.state = StateMachine.Fighting
         player.currentFight = Fight(player, self)
-        print(f"----- You Stumbled Upon a {self.name}! -----")
+        print(f"-- You Stumbled Upon a {self.name}! --")
         print(f"Lvl {self.level}  HP {self.currentHealth}")
         print("--------------------------------------")
 
     def DisplayInfo(self):
-        print(f"----- {self.name} -----")
+        print(f"----------- {self.name} -------------")
         print(f"Lvl {self.level}  HP {self.currentHealth}")
         print("--------------------------------------")

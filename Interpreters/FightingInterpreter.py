@@ -34,6 +34,7 @@ class FightingConsole(GeneralCommands):
         print("----- Player Tries To run -----")
         if chance <= 65:
             print("Player successfully ran away")
+            MAIN_PLAYER.currentArmorHealth = MAIN_PLAYER.maxArmorHealth
             MAIN_PLAYER.state = StateMachine.Basic
             MAIN_PLAYER.isInteracting = False
             MAIN_PLAYER.currentBiome.MoveEntity(MAIN_PLAYER.currentFight.enemy,

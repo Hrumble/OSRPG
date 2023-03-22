@@ -36,3 +36,4 @@ class Chest(InventoryEntity):
         self.GetContents(player)
 
 
+123

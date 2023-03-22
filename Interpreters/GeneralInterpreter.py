@@ -1,3 +1,4 @@
+import Items.ConsumableItem
 from PlayerManager import *
 from Registries.Registry import ITEM_REGISTRY
 from Registries.Registry import ENTITY_REGISTRY
@@ -31,7 +32,7 @@ class GeneralCommands(Cmd):
     def do_use(self, args):
         index = int(args)
         item = MAIN_PLAYER.inventory.inventory[index].item
-        if isinstance(item, ConsumableItem):
+        if isinstance(item, Items.ConsumableItem.ConsumableItem):
             item.Consume(MAIN_PLAYER)
         else:
             print("[SYSTEM] You can\'t consume that")

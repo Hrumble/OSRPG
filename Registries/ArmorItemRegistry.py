@@ -8,3 +8,4 @@ ITEM_REGISTRY.AddToRegistry(ArmorItem("leather_chestplate", "Leather Chestplate"
 ITEM_REGISTRY.AddToRegistry(ArmorItem("leather_leggings", "Leather Leggings", 1, 1, ArmorItem.legSlot))
 ITEM_REGISTRY.AddToRegistry(ArmorItem("leather_boots", "Leather Helmet", 1, 1, ArmorItem.feetSlot))
 ITEM_REGISTRY.AddToRegistry(ArmorItem("mushroom_cap", "Mushroom Cap", 3, 2, ArmorItem.headSlot))
+ITEM_REGISTRY.AddToRegistry(ArmorItem("fire_chestplate", "Fire Chestplate", 100, 10, ArmorItem.chestSlot))

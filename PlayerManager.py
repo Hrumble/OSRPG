@@ -8,10 +8,12 @@ MAIN_PLAYER.inventory.AddToContainer("wolf_fang", 3)
 MAIN_PLAYER.inventory.AddToContainer("big_potion", 2)
 MAIN_PLAYER.inventory.AddToContainer("apple", 4)
 MAIN_PLAYER.inventory.AddToContainer("leather_helmet")
+MAIN_PLAYER.inventory.AddToContainer("fire_chestplate")
 
 
 # Updates player current biome and checks for entities on player's position
 def PositionUpdate():
+    MAIN_PLAYER.UpdateStats()
     for biome in BIOMES:
         if biome.CheckForPlayer(MAIN_PLAYER.position):
             if MAIN_PLAYER.currentBiome != biome:

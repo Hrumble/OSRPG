@@ -7,6 +7,7 @@ import json
 class Player(Entity):
     def __init__(self, id, name, health, damage):
         super().__init__(id, name)
+        self.currentLevel = 1
         self.isAdmin = False
         self.debug = False
         self.adminError = "[SYSTEM] This command requires admin status (sudo)"
@@ -33,7 +34,7 @@ class Player(Entity):
 
     @property
     def level(self):
-        return int(self.xp/100)
+        return self.xp/(20 * self.currentLevel**2)
 
     @property
     def damage(self):
@@ -112,7 +113,7 @@ class Player(Entity):
 
     def ShowEquipment(self):
         print("----- Equipped -----")
-        print(f"Armor Health: {self.maxArmorHealth}")
+        print(f"Armor Health: {self.currentArmorHealth}")
         for slot in self.equipment:
             if self.equipment[slot] != 0:
                 print(f"{slot} -> {self.equipment[slot].name}")
@@ -124,8 +125,14 @@ class Player(Entity):
         print("----- Player\'s stats -----")
         print(f"You have {self.money} coins")
         print(f"Current HP is {self.currentHealth}")
-        print(f"Current XP is {self.xp} and Current Level is {self.level}")
+        print(f"Current XP is {self.xp}/{20*self.currentLevel**2} and Current Level is {self.currentLevel}")
         print("--------------------------------------")
+
+    def UpdateStats(self):
+        print(f"{self.currentLevel} vs {self.level}")
+        if self.currentLevel == self.level:
+            self.currentLevel += 1
+            print(f"[WORLD] Player has leveled up Level: {self.currentLevel}")
 
 class StateMachine:
     Basic = "Basic"
