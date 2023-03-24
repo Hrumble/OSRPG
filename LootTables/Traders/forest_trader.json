@@ -1,0 +1,16 @@
+{
+  "items": {
+    "leaves" : 100,
+    "feather" : 20,
+    "forest_spore" : 6,
+    "mushroom_spore" : 5,
+    "vine" : 9,
+    "mushroom_cap" : 1,
+    "vine_whip": 1,
+    "small_potion": 20,
+    "medium_potion": 15,
+    "big_potion": 10,
+    "extreme_potion" : 5
+  },
+  "chance": [60, 60, 45, 25, 10, 20, 15, 100, 100, 100, 100]
+}

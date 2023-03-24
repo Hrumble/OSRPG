@@ -4,7 +4,7 @@ from Container import *
 
 class Trader(InventoryEntity):
     def __init__(self, id, name, resellRate):
-        super().__init__(id, name)
+        super().__init__(id, name, "Traders")
         self.resellRate = resellRate
         self.type = "Trader"
 

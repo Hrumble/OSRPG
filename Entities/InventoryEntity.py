@@ -5,11 +5,11 @@ from random import randint
 
 class InventoryEntity(Entity):
 
-    def __init__(self, id, name):
+    def __init__(self, id, name, loot_table_dir):
         super().__init__(id, name)
         from Container import Container
         self.inventory = Container(f"{self.name}'s inventory")
-        self.loot_table_dir = "LootTables/" + self.ID + ".json"
+        self.loot_table_dir = f"LootTables/{loot_table_dir}/{self.ID}.json"
 
     def ExtraInfo(self):
         print("Possible drops: ")

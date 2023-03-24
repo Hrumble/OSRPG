@@ -3,7 +3,7 @@ from Container import *
 
 class Chest(InventoryEntity):
     def __init__(self, id, name, requiresKey=False, keyID="no_id"):
-        super().__init__(id, name)
+        super().__init__(id, name, "Chests")
         self.inventory = Container(name)
         self.requiresKey = requiresKey
         self.keyID = keyID  # Item ID

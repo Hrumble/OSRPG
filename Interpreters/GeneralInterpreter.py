@@ -29,6 +29,11 @@ class GeneralCommands(Cmd):
     def do_craft(self, args):
         MAIN_PLAYER.Craft(args)
 
+    def complete_craft(self, text, line):
+        print("completing craft")
+        if text:
+            return [item.ID for item in ITEM_REGISTRY.list if item.ID.startswith(text)]
+
     def do_use(self, args):
         index = int(args)
         item = MAIN_PLAYER.inventory.inventory[index].item
@@ -41,8 +46,6 @@ class GeneralCommands(Cmd):
         if not args:
             print("Specify an item ID to get its info (if the item is Example Item, the id is example_item)")
             return
-        from Registries.Registry import ITEM_REGISTRY
-        from Registries.Registry import ENTITY_REGISTRY
         item = ITEM_REGISTRY.GetByID(args)
         entity = ENTITY_REGISTRY.GetByID(args)
         if not item:

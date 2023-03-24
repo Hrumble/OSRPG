@@ -129,10 +129,10 @@ class Player(Entity):
         print("--------------------------------------")
 
     def UpdateStats(self):
-        print(f"{self.currentLevel} vs {self.level}")
-        if self.currentLevel >= self.level:
+        if self.currentLevel <= self.level:
             self.currentLevel += 1
-            print(f"[WORLD] Player has leveled up Level: {self.currentLevel}")
+            print(f"[WORLD] Player has leveled up \n "
+                  f"Player is level: {self.currentLevel}")
 
 class StateMachine:
     Basic = "Basic"

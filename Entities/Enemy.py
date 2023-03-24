@@ -6,7 +6,7 @@ from Container import *
 
 class Enemy(InventoryEntity):
     def __init__(self, id, name, baseHealth, baseDamage, xpDrop=5):
-        super().__init__(id, name)
+        super().__init__(id, name, "Enemies")
         self._damage = baseDamage
         self._health = baseHealth
         self.xpDrop = xpDrop
