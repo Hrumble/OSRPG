@@ -88,7 +88,7 @@ class GeneralCommands(Cmd):
         args = args.split()
 
         if len(args) == 1:
-            args[1] = 1
+            args.append(1)
 
         MAIN_PLAYER.inventory.AddToContainer(args[0], int(args[1]))
 

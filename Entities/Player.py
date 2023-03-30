@@ -90,6 +90,7 @@ class Player(Entity):
         self.inventory.AddToContainer(item.ID)
         print(f"[Player] Crafted {item.name}")
         print("-------------------------------------------")
+        item.OnCraft()
 
     def Equip(self, equipmentPiece):
         if not (isinstance(equipmentPiece, ArmorItem) or isinstance(equipmentPiece, WeaponItem)):

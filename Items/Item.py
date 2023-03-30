@@ -37,6 +37,8 @@ class Item:
         else:
             print("-- No Crafting --")
 
+    def OnCraft(self):
+        pass
 
 class InventoryItem:
     def __init__(self, item, quantity):
